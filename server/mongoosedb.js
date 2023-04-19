@@ -1,8 +1,7 @@
+import 'dotenv/config';
 import mongoose from "mongoose";
 
-const mongoURL = 'mongodb+srv://xavitest:abcd1234efgh@cluster0.pnlq3gt.mongodb.net/manago';
-
-mongoose.connect(mongoURL)
+mongoose.connect(process.env.MONGO_DB_URL)
   .then(() => console.log('🍃 Connected to MongoDB!'))
 
 export default mongoose;
