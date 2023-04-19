@@ -1,11 +1,30 @@
 import mongoose from '../mongoosedb.js';
 
 const userSchema = mongoose.Schema({
-  firstName: String,
-  lastName: String,
+  firstName: {
+    type: String,
+    required: true,
+    min: 2,
+    max: 15
+  },
+  lastName: {
+    type: String,
+    required: true,
+    min: 2,
+    max: 15
+  },
   profilePicPath: String,
-  email: String,
-  password: String
+  email: {
+    type: String,
+    required: true,
+    unique: true,
+    lowercase: true,
+    match: /.+\@.+\..+/
+  },
+  password: {
+    type: String,
+    required: true
+  }
 })
 
 const User = mongoose.model('User', userSchema);
