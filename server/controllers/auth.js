@@ -74,7 +74,7 @@ export const loginUser = async (req, res) => {
     //IF PASSWORD IS CORRECT, AUTHENTICATE USER USING JWT
     const token = jwt.sign({ id: user._id}, process.env.JWT_SECRET_KEY);
     //DELETE UNHASHED PASSWORD BEFORE SENDING IT BACK
-    delete user.password;
+    user.password = '';
     //HANDLE RESPONSE
     res.status(200);
     res.send({ token, user });
