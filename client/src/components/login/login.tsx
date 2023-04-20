@@ -7,11 +7,16 @@ function Login () {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  function handleSubmit (e : React.FormEvent<HTMLFormElement>) {
+  function handleSubmit (e : React.FormEvent<HTMLFormElement>) : void{
     e.preventDefault();
     if (ValidateLoginInput(email, password)) {
-      
+
     }
+  }
+
+  function clearLoginForm () : void {
+    setEmail('');
+    setPassword('');
   }
 
   return (
