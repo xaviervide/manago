@@ -1,6 +1,10 @@
 import './register.css';
+import { useState } from 'react';
 
-export default function Register() {
+function Register() {
+
+  
+
   return (
     <div className="register-container">
       <div className="register-logo-container">
@@ -30,7 +34,7 @@ export default function Register() {
           </div>
           <div>
             <p className="register-password-input">Your Password</p>
-            <input type="text"
+            <input type="password"
               placeholder='Type your password...'
             />
           </div>
@@ -40,8 +44,10 @@ export default function Register() {
         </form>
       </div>
       <div className="to-login-container">
-        <span>Already registered? <a href="/login">Log In</a></span>
+        <span>Already registered? <a href="/home/login">Log In</a></span>
       </div>
     </div>
   );
 }
+
+export default Register;

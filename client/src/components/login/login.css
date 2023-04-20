@@ -14,7 +14,7 @@
 }
 
 .login-form {
-  width: 40vw;
+  width: 35vw;
   background-color: var(--dark-gray);
   border-radius: 20px;
   box-sizing: border-box;
@@ -56,4 +56,8 @@
   border: none;
   font-weight: 600;
   font-size: large;
+}
+
+.login-form-submit-container button:hover {
+  cursor: pointer;
 }
