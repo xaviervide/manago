@@ -29,11 +29,10 @@ export const registerUser = async (req, res) => {
     })
 
     //SAVE NEW USER TO DATABASE
-    const registeredUser = await newUser.save();
+    const registeredUser = await newUser.save().then();
 
     //HANDLE RESPONSE
-    res.status(201);
-    res.send(registeredUser);
+    res.status(201).json(registeredUser);
   } catch (err) {
     //HANDLE ERROR
     console.log('ERROR REGISTERING USER: ', err);

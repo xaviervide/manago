@@ -1,6 +1,9 @@
 import './register.css';
 import { useState } from 'react';
 import ValidateRegisterInput from '../../helpers/validateRegisterInput';
+import { registerUser } from '../../apiClient';
+import { UserRegister } from '../../schemas/UserRegister';
+import { useNavigate } from 'react-router-dom';
 
 function Register() {
 
@@ -9,10 +12,18 @@ function Register() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  function handleSubmit (e : React.FormEvent<HTMLFormElement>) : void{
+  const navigate = useNavigate();
+
+  async function handleSubmit (e : React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (ValidateRegisterInput(firstName, lastName, email, password)) {
-
+      const newUserRegister = {
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+        password: password
+      }
+      await registerUser(newUserRegister);
     }
   }
 

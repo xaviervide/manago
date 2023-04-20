@@ -4,7 +4,8 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './index.css';
 import Login from './components/login/login';
 import Register from './components/register/register';
-import redirect from 'react-router-dom'
+import redirect from 'react-router-dom';
+import Dashboard from './components/dashboard/dashboard';
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
   {
     path: '/home/register',
     element: <Register></Register>
+  },
+  {
+    path: '/dashboard',
+    element: <Dashboard></Dashboard>
   }
 ]);
 
