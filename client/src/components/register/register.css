@@ -1,4 +1,4 @@
-.login-container {
+.register-container {
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -8,12 +8,12 @@
   gap: 1vh;
 }
 
-.login-logo-container h1{
+.register-logo-container h1{
   font-size: 5rem;
   margin-bottom: 4vh;
 }
 
-.login-form {
+.register-form {
   width: 40vw;
   background-color: var(--dark-gray);
   border-radius: 20px;
@@ -24,18 +24,29 @@
   gap: 3vh;
 }
 
-.login-form div{
+.register-form div {
   display: flex;
   flex-direction: column;
   gap: 0.7vh;
 }
 
-.login-form p {
-  color: var(--white);
-  font-weight: 600;
+.register-info-container {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: space-between;
 }
 
-.login-form input {
+.register-info-container div {
+  width: 45%;
+}
+
+.register-form p {
+  color: var(--white);
+  font-weight: 600;
+  padding-left: 0.5vw;
+}
+
+.register-form input {
   height: 4vh;
   border-radius: 20px;
   border: none;
@@ -43,13 +54,13 @@
   padding: 10px;
 }
 
-.login-form-submit-container {
+.register-form-submit-container {
   display: flex;
   width: 100%;
   align-items: center;
 }
 
-.login-form-submit-container button {
+.register-form-submit-container button {
   width: 10vw;
   height: 4vh;
   border-radius: 20px;
