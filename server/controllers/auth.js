@@ -76,8 +76,7 @@ export const loginUser = async (req, res) => {
     //DELETE UNHASHED PASSWORD BEFORE SENDING IT BACK
     user.password = '';
     //HANDLE RESPONSE
-    res.status(200);
-    res.send({ token, user });
+    res.status(200).json({ token, user })
 
   } catch (err) {
     console.log('ERROR LOGGING IN USER');

@@ -1,16 +1,22 @@
 import './login.css';
 import { useState } from 'react';
 import ValidateLoginInput from '../../helpers/validateLoginInput';
+import { loginUser } from '../../apiClient';
+import { UserLogin } from '../../schemas/UserLogin';
 
 function Login () {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  function handleSubmit (e : React.FormEvent<HTMLFormElement>) : void{
+  async function handleSubmit (e : React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    console.log('HERE')
+    console.log(ValidateLoginInput(email, password))
     if (ValidateLoginInput(email, password)) {
-
+      const newUserLogin : UserLogin = {email: email, password: password};
+      console.log('Valid! ', newUserLogin)
+      await loginUser(newUserLogin);
     }
   }
 
