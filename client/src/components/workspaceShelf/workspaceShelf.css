@@ -8,16 +8,16 @@
   border-bottom: 1px solid gray;
 }
 
+.workspace-projects-container > :not(:first-child) {
+  border-top: 1px solid gray;
+}
+
 .workspace-projects-container {
   padding-top: 1vh;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
   overflow-y: scroll;
-}
-
-.project-container:not(:first-child) {
-  border-top: 1px solid gray;
 }
 
 .project-container {

@@ -1,68 +1,21 @@
+import WorkspaceCard from '../workspaceCard/workspaceCard';
 import './workspaceShelf.css';
 
-function WorkspaceShelf () {
+
+interface wsName {
+  wsName: string
+}
+
+function WorkspaceShelf ( {wsName : wsName } : wsName) {
   return (
     <div className="workspaceshelf-container">
       <div className="shelf-title-container">
-        <h2>YOUR WORKSPACE</h2>
+        <h2>Your {wsName}</h2>
       </div>
       <div className="workspace-projects-container">
-        <div className="project-container">
-          <div>
-            <h4>One Project</h4>
-            <p>Project description</p>
-          </div>
-          <p>{"\u2B9E"}</p>
-        </div>
-        <div className="project-container">
-          <div>
-            <h4>One Project</h4>
-            <p>Project description</p>
-          </div>
-          <p>{"\u2B9E"}</p>
-        </div>
-        <div className="project-container">
-          <div>
-            <h4>One Project</h4>
-            <p>Project description</p>
-          </div>
-          <p>{"\u2B9E"}</p>
-        </div>
-        <div className="project-container">
-          <div>
-            <h4>One Project</h4>
-            <p>Project description</p>
-          </div>
-          <p>{"\u2B9E"}</p>
-        </div>
-        <div className="project-container">
-          <div>
-            <h4>One Project</h4>
-            <p>Project description</p>
-          </div>
-          <p>{"\u2B9E"}</p>
-        </div>
-        <div className="project-container">
-          <div>
-            <h4>One Project</h4>
-            <p>Project description</p>
-          </div>
-          <p>{"\u2B9E"}</p>
-        </div>
-        <div className="project-container">
-          <div>
-            <h4>One Project</h4>
-            <p>Project description</p>
-          </div>
-          <p>{"\u2B9E"}</p>
-        </div>
-        <div className="project-container">
-          <div>
-            <h4>One Project</h4>
-            <p>Project description</p>
-          </div>
-          <p>{"\u2B9E"}</p>
-        </div>
+        <WorkspaceCard projectName='Test #1' projectDescription='Some boilerplate description'></WorkspaceCard>
+        <WorkspaceCard projectName='Test #2' projectDescription='Some boilerplate description'></WorkspaceCard>
+        <WorkspaceCard projectName='Test #3' projectDescription='Some boilerplate description'></WorkspaceCard>
       </div>
     </div>
   );
