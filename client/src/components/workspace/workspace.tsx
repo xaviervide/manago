@@ -1,11 +1,16 @@
 import WorkspaceShelf from '../workspaceShelf/workspaceShelf';
 import './workspace.css';
 
-function Workspace () {
+interface workspaceProps {
+  userProjects: String [],
+  userTeams: String []
+}
+
+function Workspace ({userProjects, userTeams} : workspaceProps) {
   return (
     <div className="workspace-container">
-      <WorkspaceShelf wsName={"Workspace"}></WorkspaceShelf>
-      <WorkspaceShelf wsName={"Teams"}></WorkspaceShelf>
+      <WorkspaceShelf wsName={"Workspace"} projectArray={[{projectName: "Testing #1", projectDescription: "The project description"}, {projectName: "Testing #2", projectDescription: "The project description"}]}></WorkspaceShelf>
+      <WorkspaceShelf wsName={"Teams"} projectArray={[]}></WorkspaceShelf>
     </div>
   );
 }

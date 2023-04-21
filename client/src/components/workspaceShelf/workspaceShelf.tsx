@@ -2,20 +2,26 @@ import WorkspaceCard from '../workspaceCard/workspaceCard';
 import './workspaceShelf.css';
 
 
-interface wsName {
-  wsName: string
+interface workspaceShelfProps {
+  wsName: string,
+  projectArray: ProjectCardInfo []
 }
 
-function WorkspaceShelf ( {wsName : wsName } : wsName) {
+interface ProjectCardInfo {
+  projectName: string,
+  projectDescription: string,
+}
+
+function WorkspaceShelf ( {wsName, projectArray} : workspaceShelfProps) {
   return (
     <div className="workspaceshelf-container">
       <div className="shelf-title-container">
         <h2>Your {wsName}</h2>
       </div>
       <div className="workspace-projects-container">
-        <WorkspaceCard projectName='Test #1' projectDescription='Some really long boilerplate description'></WorkspaceCard>
-        <WorkspaceCard projectName='Test #2' projectDescription='Some boilerplate description'></WorkspaceCard>
-        <WorkspaceCard projectName='Test #3' projectDescription='Some boilerplate description'></WorkspaceCard>
+        {projectArray && projectArray.length > 0 && 
+          projectArray.map(el => <WorkspaceCard projectName={el.projectName} projectDescription={el.projectDescription}></WorkspaceCard>)
+        }
       </div>
     </div>
   );

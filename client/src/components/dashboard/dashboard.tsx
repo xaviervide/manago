@@ -27,7 +27,7 @@ function Dashboard () {
     <div className="dashboard-container">
       <Sidebar toggleWorkspace={toggleWorkspace}></Sidebar>
       {isWorkspaceShowing && 
-        <Workspace></Workspace>
+        <Workspace userProjects={userProjects} userTeams={userTeams}></Workspace>
       }
       <MainView></MainView>
     </div>

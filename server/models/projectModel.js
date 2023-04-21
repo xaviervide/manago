@@ -2,6 +2,7 @@ import mongoose from '../mongoosedb.js';
 
 const projectSchema = mongoose.Schema({
   projectName: String,
+  projectDescription: String,
   projectCode: {
     type: String,
     unique: true
