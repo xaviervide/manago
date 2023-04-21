@@ -13,7 +13,7 @@ function WorkspaceShelf ( {wsName : wsName } : wsName) {
         <h2>Your {wsName}</h2>
       </div>
       <div className="workspace-projects-container">
-        <WorkspaceCard projectName='Test #1' projectDescription='Some boilerplate description'></WorkspaceCard>
+        <WorkspaceCard projectName='Test #1' projectDescription='Some really long boilerplate description'></WorkspaceCard>
         <WorkspaceCard projectName='Test #2' projectDescription='Some boilerplate description'></WorkspaceCard>
         <WorkspaceCard projectName='Test #3' projectDescription='Some boilerplate description'></WorkspaceCard>
       </div>

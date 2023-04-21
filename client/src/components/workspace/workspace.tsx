@@ -5,6 +5,7 @@ function Workspace () {
   return (
     <div className="workspace-container">
       <WorkspaceShelf wsName={"Workspace"}></WorkspaceShelf>
+      <WorkspaceShelf wsName={"Teams"}></WorkspaceShelf>
     </div>
   );
 }

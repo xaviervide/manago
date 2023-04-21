@@ -6,3 +6,9 @@
   align-items: center;
   justify-content: space-between;
 }
+
+.project-container > div{
+  overflow-x: hidden;
+  white-space: nowrap;
+  max-width: 90%;
+}

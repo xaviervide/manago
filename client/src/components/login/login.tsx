@@ -16,8 +16,15 @@ function Login () {
     e.preventDefault();
     if (ValidateLoginInput(email, password)) {
       const newUserLogin : UserLogin = {email: email, password: password};
-      await loginUser(newUserLogin);
-      navigate('/dashboard');
+      try {
+        await loginUser(newUserLogin);
+        navigate('/dashboard');
+      } catch (err) {
+        clearLoginForm();
+        alert('Login credentials are not correct!');
+      }
+    } else {
+      alert('Make sure your sintax is correct!');
     }
   }
 

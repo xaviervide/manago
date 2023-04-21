@@ -29,6 +29,10 @@ const userSchema = mongoose.Schema({
     type: [String],
     default: []
   },
+  teamIds: {
+    type: [String],
+    default: []
+  },
   sessionIds: {
     type: [String],
     default: []
