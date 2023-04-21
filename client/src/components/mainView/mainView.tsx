@@ -1,3 +1,4 @@
+import ProjectCard from '../projectCard/projectCard';
 import './mainView.css';
 
 function MainView () {
@@ -7,6 +8,19 @@ function MainView () {
         <h2>Codework's Projects</h2>
       </div>
       <div className="mainview-project-container">
+        <ProjectCard></ProjectCard>
+        <ProjectCard></ProjectCard>
+        <ProjectCard></ProjectCard>
+        <ProjectCard></ProjectCard>
+        <ProjectCard></ProjectCard>
+        <ProjectCard></ProjectCard>
+        <ProjectCard></ProjectCard>
+        <ProjectCard></ProjectCard>
+        <ProjectCard></ProjectCard>
+        <ProjectCard></ProjectCard>
+        <ProjectCard></ProjectCard>
+        <ProjectCard></ProjectCard>
+        <ProjectCard></ProjectCard>
         
       </div>
     </div>
