@@ -10,6 +10,13 @@ function MainView () {
       <div className="mainview-project-container">
         <ProjectCard></ProjectCard>
         <ProjectCard></ProjectCard>
+        <ProjectCard></ProjectCard>
+        <ProjectCard></ProjectCard>
+        <ProjectCard></ProjectCard>
+        <ProjectCard></ProjectCard>
+        <ProjectCard></ProjectCard> 
+        <ProjectCard></ProjectCard>
+        <ProjectCard></ProjectCard>
       </div>
     </div>
   );

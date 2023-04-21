@@ -7,12 +7,6 @@
   padding: 3vh 5vw;
   overflow-y: scroll;
 }
-/* 
-.mainview-title-container {
-  position: absolute;
-  width: 60vw;
-  background-color: wheat;
-} */
 
 .mainview-title-container h2 {
   font-size: 3rem;

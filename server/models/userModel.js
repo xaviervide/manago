@@ -24,6 +24,14 @@ const userSchema = mongoose.Schema({
   password: {
     type: String,
     required: true
+  },
+  projectIds: {
+    type: [String],
+    default: []
+  },
+  sessionIds: {
+    type: [String],
+    default: []
   }
 })
 
