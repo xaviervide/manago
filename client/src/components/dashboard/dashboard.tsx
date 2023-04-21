@@ -11,16 +11,24 @@ function Dashboard () {
   const [userTeams, setUserTeams] = useState([]);
   const [userSessions, setUserSessions] = useState([]);
 
+  const [isWorkspaceShowing, setIsWorkspaceShowing] = useState(false);
+
   const navigate = useNavigate();
 
   useEffect(() => {
     if (!sessionStorage.getItem('user-token')) navigate('/');
   }, [])
 
+  function toggleWorkspace () {
+    setIsWorkspaceShowing(!isWorkspaceShowing);
+  }
+
   return (
     <div className="dashboard-container">
-      <Sidebar></Sidebar>
-      <Workspace></Workspace>
+      <Sidebar toggleWorkspace={toggleWorkspace}></Sidebar>
+      {isWorkspaceShowing && 
+        <Workspace></Workspace>
+      }
       <MainView></MainView>
     </div>
   );

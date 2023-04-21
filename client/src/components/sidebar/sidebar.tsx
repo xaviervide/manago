@@ -1,6 +1,10 @@
 import './sidebar.css';
 
-function Sidebar () {
+interface sidebarProps {
+  toggleWorkspace: () => void,
+}
+
+function Sidebar ({toggleWorkspace} : sidebarProps) {
   return (
     <div className="sidebar-container">
       <div className="sidebar-logo-container">
@@ -8,7 +12,7 @@ function Sidebar () {
       </div>
       <div className="sidebar-icons-container">
         <div>
-          <div className='icon'></div>
+          <div className='icon' onClick={() => toggleWorkspace()}></div>
           <div className='icon'></div>
         </div>
         <div>
