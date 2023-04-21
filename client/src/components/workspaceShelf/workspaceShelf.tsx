@@ -7,21 +7,62 @@ function WorkspaceShelf () {
         <h2>YOUR WORKSPACE</h2>
       </div>
       <div className="workspace-projects-container">
-        <h4>One Project</h4>
-        <h4>One Project</h4>
-        <h4>One Project</h4>
-        <h4>One Project</h4>
-        <h4>One Project</h4>
-        <h4>One Project</h4>
-        <h4>One Project</h4>
-        <h4>One Project</h4>
-        <h4>One Project</h4>
-        <h4>One Project</h4>
-        <h4>One Project</h4>
-        <h4>One Project</h4>
-        <h4>One Project</h4>
-        <h4>One Project</h4>
-        <h4>One Project</h4>
+        <div className="project-container">
+          <div>
+            <h4>One Project</h4>
+            <p>Project description</p>
+          </div>
+          <p>{"\u2B9E"}</p>
+        </div>
+        <div className="project-container">
+          <div>
+            <h4>One Project</h4>
+            <p>Project description</p>
+          </div>
+          <p>{"\u2B9E"}</p>
+        </div>
+        <div className="project-container">
+          <div>
+            <h4>One Project</h4>
+            <p>Project description</p>
+          </div>
+          <p>{"\u2B9E"}</p>
+        </div>
+        <div className="project-container">
+          <div>
+            <h4>One Project</h4>
+            <p>Project description</p>
+          </div>
+          <p>{"\u2B9E"}</p>
+        </div>
+        <div className="project-container">
+          <div>
+            <h4>One Project</h4>
+            <p>Project description</p>
+          </div>
+          <p>{"\u2B9E"}</p>
+        </div>
+        <div className="project-container">
+          <div>
+            <h4>One Project</h4>
+            <p>Project description</p>
+          </div>
+          <p>{"\u2B9E"}</p>
+        </div>
+        <div className="project-container">
+          <div>
+            <h4>One Project</h4>
+            <p>Project description</p>
+          </div>
+          <p>{"\u2B9E"}</p>
+        </div>
+        <div className="project-container">
+          <div>
+            <h4>One Project</h4>
+            <p>Project description</p>
+          </div>
+          <p>{"\u2B9E"}</p>
+        </div>
       </div>
     </div>
   );

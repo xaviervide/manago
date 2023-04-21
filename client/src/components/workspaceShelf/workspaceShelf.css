@@ -1,18 +1,34 @@
 .workspaceshelf-container {
   display: flex;
   flex-direction: column;
-  background-color: yellow;
   width: 100%;
   height: 50vh;
   box-sizing: border-box;
   padding: 1vh 1vw;
+  border-bottom: 1px solid gray;
 }
 
 .workspace-projects-container {
   padding-top: 1vh;
   display: flex;
   flex-direction: column;
-  gap: 2vh;
   box-sizing: border-box;
   overflow-y: scroll;
+}
+
+.project-container {
+  box-sizing: border-box;
+  padding: 1vh 0;
+  border-bottom: 1px solid lightgray;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.project-container:hover {
+  cursor: pointer;
+}
+
+.workspace-projects-container::-webkit-scrollbar {
+  display: none;
 }
