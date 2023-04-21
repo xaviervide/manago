@@ -16,7 +16,7 @@ function ProjectCard () {
         </div>
       </div>
       <div className="projectcard-timer-container">
-        <button>START</button>
+        <button className='start-button'>START</button>
         <button>&#8942;</button>
         <p>3:02</p>
       </div>
