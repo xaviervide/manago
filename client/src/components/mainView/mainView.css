@@ -1,0 +1,31 @@
+.mainview-container {
+  display: flex;
+  flex-direction: column;
+  width: 70vw;
+  box-sizing: border-box;
+  background-color: aliceblue;
+  padding: 3vh 5vw;
+  overflow-y: scroll;
+}
+/* 
+.mainview-title-container {
+  position: absolute;
+  width: 60vw;
+  background-color: wheat;
+} */
+
+.mainview-title-container h2 {
+  font-size: 3rem;
+  margin-left: 1vw;
+}
+
+.mainview-project-container {
+  margin-top: 10vh;
+  min-height: 160vh;
+  width: 100%;
+  background-color: yellow;
+}
+
+.mainview-container::-webkit-scrollbar {
+  display: none;
+}
