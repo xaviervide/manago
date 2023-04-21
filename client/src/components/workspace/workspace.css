@@ -1,0 +1,6 @@
+.workspace-container {
+  display: flex;
+  flex-direction: column;
+  width: 20vw;
+  background-color: lightgray;
+}
