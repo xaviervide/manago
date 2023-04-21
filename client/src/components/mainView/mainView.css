@@ -22,9 +22,9 @@
 .mainview-project-container {
   box-sizing: border-box;
   margin-top: 10vh;
+  flex: 1;
   width: 100%;
   border: 1px solid gray ;
-  height: fit-content;
 }
 
 .mainview-container::-webkit-scrollbar {

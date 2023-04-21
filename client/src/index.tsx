@@ -4,13 +4,15 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './index.css';
 import Login from './components/login/login';
 import Register from './components/register/register';
-import redirect from 'react-router-dom';
 import Dashboard from './components/dashboard/dashboard';
+import { useNavigate } from 'react-router-dom';
+import Redirect from './components/redirect/redirect';
+
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Login></Login>
+    element: <Redirect></Redirect>
   },
   {
     path: '/home/login',
