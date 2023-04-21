@@ -3,12 +3,13 @@ import './workspaceCard.css';
 interface ProjectCardInfo {
   projectName: string,
   projectDescription: string,
+  changeActiveWorkspace: (newWs : string) => void
 }
 
-function WorkspaceCard ({projectName, projectDescription} : ProjectCardInfo) {
+function WorkspaceCard ({projectName, projectDescription, changeActiveWorkspace} : ProjectCardInfo) {
   return (
     <div className="workspacecard-container">
-      <div className="project-container">
+      <div className="project-container" onClick={() => changeActiveWorkspace(projectName)}>
           <div>
             <h4>{projectName}</h4>
             <p>{projectDescription}</p>

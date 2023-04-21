@@ -10,6 +10,7 @@ function Dashboard () {
   const [userProjects, setUserProjects] = useState([]);
   const [userTeams, setUserTeams] = useState([]);
   const [userSessions, setUserSessions] = useState([]);
+  const [activeWorkspace, setActiveWorkspace] = useState('Xavi')
 
   const [isWorkspaceShowing, setIsWorkspaceShowing] = useState(false);
 
@@ -23,13 +24,17 @@ function Dashboard () {
     setIsWorkspaceShowing(!isWorkspaceShowing);
   }
 
+  function changeActiveWorkspace (newWS : string) {
+    setActiveWorkspace(newWS);
+  }
+
   return (
     <div className="dashboard-container">
       <Sidebar toggleWorkspace={toggleWorkspace}></Sidebar>
       {isWorkspaceShowing && 
-        <Workspace userProjects={userProjects} userTeams={userTeams}></Workspace>
+        <Workspace userProjects={userProjects} userTeams={userTeams} changeActiveWorkspace={changeActiveWorkspace}></Workspace>
       }
-      <MainView></MainView>
+      <MainView title={activeWorkspace}></MainView>
     </div>
   );
 }

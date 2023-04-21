@@ -4,7 +4,8 @@ import './workspaceShelf.css';
 
 interface workspaceShelfProps {
   wsName: string,
-  projectArray: ProjectCardInfo []
+  projectArray: ProjectCardInfo [],
+  changeActiveWorkspace: (newWs : string) => void
 }
 
 interface ProjectCardInfo {
@@ -12,7 +13,7 @@ interface ProjectCardInfo {
   projectDescription: string,
 }
 
-function WorkspaceShelf ( {wsName, projectArray} : workspaceShelfProps) {
+function WorkspaceShelf ( {wsName, projectArray, changeActiveWorkspace} : workspaceShelfProps) {
   return (
     <div className="workspaceshelf-container">
       <div className="shelf-title-container">
@@ -20,7 +21,7 @@ function WorkspaceShelf ( {wsName, projectArray} : workspaceShelfProps) {
       </div>
       <div className="workspace-projects-container">
         {projectArray && projectArray.length > 0 && 
-          projectArray.map(el => <WorkspaceCard projectName={el.projectName} projectDescription={el.projectDescription}></WorkspaceCard>)
+          projectArray.map(el => <WorkspaceCard changeActiveWorkspace={changeActiveWorkspace} projectName={el.projectName} projectDescription={el.projectDescription}></WorkspaceCard>)
         }
       </div>
     </div>
