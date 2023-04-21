@@ -24,6 +24,8 @@ function Login () {
         alert('Login credentials are not correct!');
       }
     } else {
+      //DISPLAY INVALID CREDENTIALS IN THE UI
+      //--> email already in use, password too short, etc...
       alert('Make sure your sintax is correct!');
     }
   }

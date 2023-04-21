@@ -23,7 +23,17 @@ function Register() {
         email: email,
         password: password
       }
-      await registerUser(newUserRegister);
+      try {
+        await registerUser(newUserRegister);
+        navigate('/dashboard');
+      } catch (err) {
+        clearRegisterForm();
+        alert('Register credentials are not correct!');
+      }
+    } else {
+      //DISPLAY INVALID CREDENTIALS IN THE UI
+      //--> email already in use, password too short, etc...
+      alert('Make sure your sintax is correct!');
     }
   }
 
