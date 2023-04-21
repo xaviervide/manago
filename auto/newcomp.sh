@@ -14,7 +14,7 @@ echo "import './$1.css';
 
 function ${1^} () {
   return (
-    <div className=\"$1-container\">
+    <div className=\"${1,,}-container\">
   
     </div>
   );
