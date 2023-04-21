@@ -23,3 +23,6 @@ function ${1^} () {
 export default ${1^};" > "./client/src/components/$1/$1.tsx"
 
 echo "${1^} component successfully created!"
+
+code "./client/src/components/$1/$1.tsx"
+code "./client/src/components/$1/$1.css"

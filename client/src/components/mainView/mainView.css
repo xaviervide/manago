@@ -21,7 +21,7 @@
 
 .mainview-project-container {
   margin-top: 10vh;
-  min-height: 160vh;
+  height: 100%;
   width: 100%;
   background-color: yellow;
 }
