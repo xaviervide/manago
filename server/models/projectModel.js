@@ -11,7 +11,7 @@ const projectSchema = mongoose.Schema({
     type: Array,
     default: []
   },
-  currentSessionIds: {
+  currentTaskIds: {
     type: Array,
     default: []
   }

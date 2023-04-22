@@ -13,7 +13,6 @@ const userSchema = mongoose.Schema({
     min: 2,
     max: 15
   },
-  profilePicPath: String,
   email: {
     type: String,
     required: true,
@@ -33,7 +32,7 @@ const userSchema = mongoose.Schema({
     type: [String],
     default: []
   },
-  sessionIds: {
+  taskIds: {
     type: [String],
     default: []
   }

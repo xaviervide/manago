@@ -1,6 +1,6 @@
 import mongoose from '../mongoosedb.js';
 
-const sessionSchema = mongoose.Schema({
+const taskSchema = mongoose.Schema({
   employeeId: mongoose.Types.ObjectId,
   projectId: mongoose.Types.ObjectId,
   timeAmount: Number,
@@ -8,6 +8,6 @@ const sessionSchema = mongoose.Schema({
   hourlyRate: Number
 })
 
-const Session = mongoose.model('Session', sessionSchema);
+const Task = mongoose.model('Task', taskSchema);
 
-export default Session;
+export default Task;

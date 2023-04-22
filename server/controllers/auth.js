@@ -10,7 +10,6 @@ export const registerUser = async (req, res) => {
     const {
       firstName,
       lastName,
-      profilePicPath,
       email,
       password
     } = req.body;
@@ -23,7 +22,6 @@ export const registerUser = async (req, res) => {
     const newUser = new User({
       firstName,
       lastName,
-      profilePicPath,
       email,
       password: passwordHash
     })
