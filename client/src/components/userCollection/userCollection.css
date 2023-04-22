@@ -4,15 +4,17 @@
   width: 100%;
   max-height: 40vh;
   box-sizing: border-box;
-  padding: 2vh 0.8vw;
+  padding: 2vh 0.8vw 0 0.8vw;
   border-bottom: 1px solid gray;
 }
+
+
 
 .usercollection-label {
   font-size: 1.3rem;
   box-sizing: border-box;
-  padding: 0 0 1vh 0;
   width: fit-content;
+  padding-bottom: 2vh;
 }
 
 .usercollection-label:hover {

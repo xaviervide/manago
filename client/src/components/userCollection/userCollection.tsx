@@ -22,16 +22,16 @@ function UserCollection ({isProjects} : UserCollectionProps) {
         <h3 className="usercollection-label" onClick={() => collapseCollection()}>Your {isProjects ? "Projects" : "Teams"}</h3>
       </div>
       {!isCollapsed && 
-      <div className="usercollection-projects-container">
-        <WsCard></WsCard>
-        <WsCard></WsCard>
-        <WsCard></WsCard>
-        <WsCard></WsCard>
-        <WsCard></WsCard>
-        <WsCard></WsCard>
-        <WsCard></WsCard>
-        <WsCard></WsCard>
-      </div>
+        <div className="usercollection-projects-container">
+          <WsCard></WsCard>
+          <WsCard></WsCard>
+          <WsCard></WsCard>
+          <WsCard></WsCard>
+          <WsCard></WsCard>
+          <WsCard></WsCard>
+          <WsCard></WsCard>
+          <WsCard></WsCard>
+        </div>
       }
     </div>
   );
