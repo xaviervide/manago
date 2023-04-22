@@ -1,0 +1,41 @@
+.usertasks-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 10vh;
+  box-sizing: border-box;
+  padding: 1vh 1.5vw;
+  border-bottom: 1px solid rgb(60, 60, 60);
+}
+
+.usertasks-container:hover {
+  cursor: pointer;
+}
+
+.usertasks-label {
+  font-size: 1.3rem;
+}
+
+.usertasks-info {
+  color: rgb(140, 140, 140);
+  font-size: 0.8rem;
+}
+
+.usertasks-add-btn {
+  height: 4vh;
+  width: 4vh;
+  border-radius: 100%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  font-weight: 700;
+  border: 3px solid white;
+}
+
+.usertasks-add-btn:hover {
+  color: white;
+  background-color: black;
+}

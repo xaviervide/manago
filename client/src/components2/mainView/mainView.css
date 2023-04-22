@@ -1,0 +1,26 @@
+.mainview-container {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  box-sizing: border-box;
+  background-color: aliceblue;
+  padding: 3vh 5vw;
+  overflow-y: scroll;
+}
+
+.mainview-title-container h2 {
+  font-size: 3rem;
+  margin-left: 1vw;
+}
+
+.mainview-project-container {
+  box-sizing: border-box;
+  margin-top: 10vh;
+  flex: 1;
+  width: 100%;
+  border: 1px solid gray ;
+}
+
+.mainview-container::-webkit-scrollbar {
+  display: none;
+}
