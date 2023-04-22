@@ -38,7 +38,7 @@ function Login () {
   return (
     <div className="login-container">
       <div className="login-logo-container">
-        <h1>MANAGO</h1>
+        <h1>MANAGO2</h1>
       </div>
       <div className="login-form-container">
         <form className="login-form" onSubmit={(e) => handleSubmit(e)}>

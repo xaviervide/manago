@@ -47,7 +47,7 @@ function Register() {
   return (
     <div className="register-container">
       <div className="register-logo-container">
-        <h1>MANAGO</h1>
+        <h1>MANAGO2</h1>
       </div>
       <div className="register-form-container">
         <form className="register-form" onSubmit={(e) => handleSubmit(e)}>

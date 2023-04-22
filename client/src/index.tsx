@@ -2,9 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './index.css';
-import Login from './components2/login/login';
-import Register from './components2/register/register';
-import Dashboard from './components2/dashboard/dashboard';
+import Login from './components/login/login';
+import Register from './components/register/register';
+import Dashboard from './components/dashboard/dashboard';
 import { useNavigate } from 'react-router-dom';
 import Redirect from './components/redirect/redirect';
 

@@ -8,7 +8,6 @@ function CurrentTasks () {
       <TaskCard></TaskCard>
       <TaskCard></TaskCard>
       <TaskCard></TaskCard>
-      <TaskCard></TaskCard>
     </div>
   );
 }

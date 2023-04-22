@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import MainView from '../mainView/mainView';
-import Sidebar from '../sidebar/sidebar';
-import Workspace from '../workspace/workspace';
 import './dashboard.css';
 import { useNavigate } from 'react-router-dom';
+import Workspaces from '../workspaces/workspaces';
+import Sidebar from '../sidebar/sidebar';
 
 function Dashboard () {
 
@@ -32,10 +32,9 @@ function Dashboard () {
   return (
     <div className="dashboard-container">
       <Sidebar toggleWorkspace={toggleWorkspace}></Sidebar>
-      {isWorkspaceShowing && 
-        <Workspace userProjects={userProjects} userTeams={userTeams} changeActiveWorkspace={changeActiveWorkspace}></Workspace>
-      }
-      <MainView title={activeWorkspace}></MainView>
+      {/* {isWorkspaceShowing && } */}
+      <Workspaces></Workspaces>
+      <MainView></MainView>
     </div>
   );
 }
