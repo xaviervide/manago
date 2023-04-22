@@ -1,0 +1,24 @@
+.wscard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding: 1vh 0;
+}
+
+.wscard:hover {
+  cursor: pointer;
+}
+
+.wscard-info {
+  max-width: 90%;
+}
+
+.wscard-info p{
+  overflow-x: scroll;
+  white-space: nowrap;
+}
+
+.wscard-info p::-webkit-scrollbar {
+  display: none;
+}
