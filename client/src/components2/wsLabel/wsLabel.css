@@ -1,0 +1,13 @@
+.wslabel-container {
+  display: flex;
+}
+
+.wslabel-info h2{
+  font-size: 3rem;
+}
+
+.wslabel-info p {
+  box-sizing: border-box;
+  padding-left: 1vw;
+  color: rgb(140, 140, 140);
+}

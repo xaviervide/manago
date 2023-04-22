@@ -1,27 +1,16 @@
-// import ProjectCard from '../projectCard/projectCard';
+import CurrentTasks from '../currentTasks/currentTasks';
+import WsLabel from '../wsLabel/wsLabel';
 import './mainView.css';
 
 interface MainViewProps {
-  title: string
+  title: string,
 }
 
-function MainView ({title} : MainViewProps) {
+function MainView () {
   return (
     <div className="mainview-container">
-      <div className="mainview-title-container">
-        <h2>{title}'s Tasks</h2>
-      </div>
-      <div className="mainview-project-container">
-        {/* <ProjectCard></ProjectCard>
-        <ProjectCard></ProjectCard>
-        <ProjectCard></ProjectCard>
-        <ProjectCard></ProjectCard>
-        <ProjectCard></ProjectCard>
-        <ProjectCard></ProjectCard>
-        <ProjectCard></ProjectCard> 
-        <ProjectCard></ProjectCard>
-        <ProjectCard></ProjectCard> */}
-      </div>
+      <WsLabel></WsLabel>
+      <CurrentTasks></CurrentTasks>
     </div>
   );
 }

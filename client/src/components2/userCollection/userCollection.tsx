@@ -3,6 +3,8 @@ import './userCollection.css';
 
 interface UserCollectionProps {
   isProjects: boolean,
+  // collectionProjects: object [],
+  // changeActiveWS: () => void
 }
 
 function UserCollection ({isProjects} : UserCollectionProps) {
@@ -12,9 +14,6 @@ function UserCollection ({isProjects} : UserCollectionProps) {
         <h3 className="usercollection-label">Your {isProjects ? "Projects" : "Teams"}</h3>
       </div>
       <div className="usercollection-projects-container">
-      <WsCard></WsCard>
-      <WsCard></WsCard>
-      <WsCard></WsCard>
       <WsCard></WsCard>
       <WsCard></WsCard>
       <WsCard></WsCard>

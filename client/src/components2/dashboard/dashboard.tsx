@@ -34,7 +34,7 @@ function Dashboard () {
       <Sidebar toggleWorkspace={toggleWorkspace}></Sidebar>
       {/* {isWorkspaceShowing && } */}
       <Workspaces></Workspaces>
-      <MainView title={activeWorkspace}></MainView>
+      <MainView></MainView>
     </div>
   );
 }

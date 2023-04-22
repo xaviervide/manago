@@ -1,0 +1,11 @@
+.currenttasks-container {
+  box-sizing: border-box;
+  margin-top: 8vh;
+  flex: 1;
+  width: 100%;
+  border: 1px solid gray ;
+}
+
+.currenttasks-container::-webkit-scrollbar {
+  display: none;
+}
