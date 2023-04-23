@@ -52,14 +52,15 @@
 .timer-button {
   border-radius: 5px;
   color: white;
-  min-width: 4vw;
+  min-width: 5vw;
 }
 
 .taskcard-timer-container p {
   border: 3px solid gray;
   border-radius: 5px;
   box-sizing: border-box;
-  padding: 0 0.2vw;
+  min-width: 5vw;
+  text-align: center;
 }
 
 .start-state {
@@ -72,11 +73,20 @@
   background-color: red;
 }
 
-.task-opts-button {
-  border: 3px solid rgb(38, 38, 38);
-  background-color: rgb(116, 116, 116);
+.opts-button {
   border-radius: 5px;
   color: white ;
+  min-width: 5vw;
+}
+
+.pause-state {
+  border: 3px solid rgb(38, 38, 38);
+  background-color: rgb(116, 116, 116);
+}
+
+.resume-state {
+  border: 3px solid darkorange;
+  background-color: orange;
 }
 
 .taskcard-timer-container button:hover {

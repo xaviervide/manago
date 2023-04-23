@@ -1,21 +1,21 @@
 import { useState } from 'react';
 import './taskCard.css';
-import Timer from 'easytimer.js';
+import useTimer from 'easytimer-react-hook';
 
 function TaskCard () {
 
-  const [isTracking, setIsTracking] = useState(false);
-  const [currTime, setCurrTime] = useState('00:00');
-
-  const timerInstance = new Timer();
+  const [timer, isTargetAchieved] = useTimer();
 
   function startStop () {
-    setIsTracking(!isTracking);
-    timerInstance.start();
-    setInterval(() => {
-      console.log(timerInstance.getTimeValues().toString(['minutes', 'seconds']))
-      setCurrTime(timerInstance.getTimeValues().toString(['minutes', 'seconds']))
-    }, 1000)
+    if (!timer.isRunning()) timer.start()
+    else timer.stop();
+  }
+
+  function pauseResume () {
+    if (timer.isRunning()) {
+      if (!timer.isPaused()) timer.pause();
+      else timer.start();
+    }
   }
 
   return (
@@ -34,11 +34,14 @@ function TaskCard () {
       </div>
       <div className="taskcard-timer-container">
         <button 
-          className={`timer-button ${isTracking ? "stop-state" : "start-state"}`}
+          className={`timer-button ${timer.isRunning() ? "stop-state" : "start-state"}`}
           onClick={() => startStop()}
-        >{isTracking ? "STOP" : "START"}</button>
-        <p>{currTime}</p>
-        <button className="task-opts-button">&#8942;</button>
+        >{timer.isRunning() ? "FINISH" : "START"}</button>
+        <p>{timer.getTimeValues().toString(['minutes', 'seconds'])}</p>
+        <button 
+        className={`opts-button ${timer.isPaused() ? "resume-state" : "pause-state"}`}
+        onClick={() => pauseResume()}
+        >{timer.isPaused() ? "RESUME" : "PAUSE"}</button>
       </div>
     </div>
   );

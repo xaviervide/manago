@@ -39,3 +39,27 @@ export async function registerUser (userCredentials : UserRegister) {
     throw new Error(err as string);
   }
 }
+
+export async function fetchUserData (userID: string) {
+  try {
+
+  } catch (err) {
+    throw new Error(err as string);
+  }
+}
+
+export async function crateUserTask (userID: string) {
+  
+}
+
+export async function updateUserTasks (userID: string) {
+
+}
+
+export async function updateUserProjects (userID: string) {
+
+}
+
+export async function updateUserTeams (userID: string) {
+
+}
