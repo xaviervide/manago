@@ -4,14 +4,15 @@ import './mainView.css';
 
 interface MainViewProps {
   title: string,
-  numOfTasks: number
+  numOfTasks: number,
+  tasks: {taskName: string, taskDescription: string, totalTaskTime: string} []
 }
 
-function MainView ({title, numOfTasks} : MainViewProps) {
+function MainView ({title, numOfTasks, tasks} : MainViewProps) {
   return (
     <div className="mainview-container">
       <WsLabel wsName={title} numOfTasks={numOfTasks}></WsLabel>
-      <CurrentTasks></CurrentTasks>
+      <CurrentTasks tasks={tasks}></CurrentTasks>
     </div>
   );
 }

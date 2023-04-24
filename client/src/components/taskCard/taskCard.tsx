@@ -2,7 +2,13 @@ import { useState } from 'react';
 import './taskCard.css';
 import useTimer from 'easytimer-react-hook';
 
-function TaskCard () {
+interface TaskCardProps {
+  taskName: string,
+  taskDescription: string,
+  totalTaskTime: string
+}
+
+function TaskCard ({taskName, taskDescription, totalTaskTime} : TaskCardProps) {
 
   const [timer, isTargetAchieved] = useTimer();
   const [isRunning, setIsRunning] = useState(false);
@@ -10,8 +16,14 @@ function TaskCard () {
 
   function startStop () {
     if (isRunning) {
-      setIsRunning(!isRunning);
-      timer.stop();
+      if(window.confirm('Are you sure you want to end this timer?')) {
+        setIsRunning(!isRunning);
+        setIsPaused(false);
+        timer.stop();
+      } else {
+        setIsPaused(true);
+        timer.pause();
+      }
     } else {
       setIsRunning(!isRunning);
       timer.start()
@@ -34,16 +46,16 @@ function TaskCard () {
     <div className="taskcard-container">
       <div className="taskcard-info-container">
         <div className="taskcard-info">
-          <h3>Project Name</h3>
-          <p>Some project description or data</p>
+          <h3>{taskName}</h3>
+          <p>{taskDescription}</p>
         </div>
+      </div>
         <div className="taskcard-members-container">
           <div>X</div>
           <div>L</div>
           <div>A</div>
           <div>+3</div>
         </div>
-      </div>
       <div className="taskcard-timer-container">
         <button 
           className={`timer-button ${isRunning ? "stop-state" : "start-state"}`}
@@ -54,6 +66,9 @@ function TaskCard () {
         className={`opts-button ${isPaused ? "resume-state" : "pause-state"}`}
         onClick={() => pauseResume()}
         >{isPaused ? "RESUME" : "PAUSE"}</button>
+      </div>
+      <div className="taskcard-totaltime-container">
+        <p>{totalTaskTime}</p>
       </div>
     </div>
   );

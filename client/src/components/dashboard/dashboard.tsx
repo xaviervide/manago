@@ -6,17 +6,18 @@ import Workspaces from '../workspaces/workspaces';
 import Sidebar from '../sidebar/sidebar';
 import { fetchUserData } from '../../apiClient';
 
+
 interface WorkspacesProps {
-  projects: object [],
-  teams: object [],
-  tasks: object []
+  projects: {projectName: string, projectDescription: string}[],
+  teams: {projectName: string, projectDescription: string}[], 
+  tasks: {taskName: string, taskDescription: string, totalTaskTime: string} []
 }
 
 function Dashboard () {
 
   const [activeWorkspace, setActiveWorkspace] = useState('Your')
 
-  const [isWorkspaceShowing, setIsWorkspaceShowing] = useState(false);
+  const [isWorkspaceShowing, setIsWorkspaceShowing] = useState(true);
   const [currUserData, setCurrUserData] = useState({} as WorkspacesProps);
 
   const navigate = useNavigate();
@@ -52,7 +53,7 @@ function Dashboard () {
       <Workspaces userData={currUserData} changeActiveWorkspace={changeActiveWorkspace}></Workspaces>
       }
       {currUserData && 
-        <MainView title={activeWorkspace} numOfTasks={currUserData.tasks?.length}></MainView>
+        <MainView title={activeWorkspace} numOfTasks={currUserData.tasks?.length} tasks={currUserData.tasks}></MainView>
       }
     </div>
   );

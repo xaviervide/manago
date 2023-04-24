@@ -4,7 +4,7 @@ import './userCollection.css';
 
 interface UserCollectionProps {
   isProjects: boolean,
-  collectionProjects: object [],
+  collectionProjects: {projectName: string, projectDescription: string}[],
   changeActiveWorkspace: (newWS: string) => void
 }
 
@@ -24,7 +24,7 @@ function UserCollection ({isProjects, collectionProjects, changeActiveWorkspace}
       {!isCollapsed && 
         <div className="usercollection-projects-container">
           {collectionProjects && collectionProjects.length > 0 &&
-            collectionProjects.map(el => <WsCard projectName={JSON.parse(JSON.stringify(el)).name} projectDescription={JSON.stringify(el)} changeActiveWorkspace={changeActiveWorkspace}></WsCard>)
+            collectionProjects.map(el => <WsCard projectName={el.projectName} projectDescription={el.projectDescription} changeActiveWorkspace={changeActiveWorkspace}></WsCard>)
           }
         </div>
       }

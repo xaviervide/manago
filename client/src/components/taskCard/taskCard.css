@@ -9,6 +9,10 @@
   border-bottom: 1px solid lightgray;
 }
 
+.taskcard-info {
+  min-width: 20vw;
+}
+
 .taskcard-info-container {
   display: flex;
   gap: 4vw;
@@ -24,7 +28,7 @@
   border-radius: 100%;
   background-color: white;
   border: 3px solid lightgray;
-  margin-left: -1vw;
+  margin-left: -1.2vw;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -39,8 +43,10 @@
   gap: 5px;
 }
 
-.taskcard-timer-container p {
+.taskcard-timer-container p,
+.taskcard-totaltime-container p {
   font-weight: 700;
+  font-size: 1.3rem;
 }
 
 .taskcard-timer-container button {

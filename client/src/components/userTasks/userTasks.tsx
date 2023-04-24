@@ -8,6 +8,10 @@ interface UserTasksProps {
 
 function UserTasks ({tasks, changeActiveWorkspace}: UserTasksProps) {
 
+  function handleAddTask () {
+    const newTaskName = prompt('Please enter the name of the new task');
+    const newTaskDescription = prompt('Provide a description for the new task');
+  }
 
   return (
     <div className="usertasks-container" onClick={() => changeActiveWorkspace('Your')}>
@@ -17,7 +21,9 @@ function UserTasks ({tasks, changeActiveWorkspace}: UserTasksProps) {
         Time: 12h10m</p>
       </div>
       <div className="usertasks-btn-container">
-        <div className="usertasks-add-btn">+</div>
+        <div className="usertasks-add-btn"
+        onClick={() => handleAddTask()}
+        >+</div>
       </div>
     </div>
   );
