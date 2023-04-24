@@ -42,6 +42,16 @@ export async function registerUser (userCredentials : UserRegister) {
 
 export async function fetchUserData (userID: string) {
   try {
+    const loggedUserData = await fetch((serverURL + 'user'), {
+      method: 'GET',
+      body: JSON.stringify(userID),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then (res => res.json());
+
+    console.log(loggedUserData);
 
   } catch (err) {
     throw new Error(err as string);

@@ -5,16 +5,28 @@ import useTimer from 'easytimer-react-hook';
 function TaskCard () {
 
   const [timer, isTargetAchieved] = useTimer();
+  const [isRunning, setIsRunning] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
 
   function startStop () {
-    if (!timer.isRunning()) timer.start()
-    else timer.stop();
+    if (isRunning) {
+      setIsRunning(!isRunning);
+      timer.stop();
+    } else {
+      setIsRunning(!isRunning);
+      timer.start()
+    }
   }
 
   function pauseResume () {
-    if (timer.isRunning()) {
-      if (!timer.isPaused()) timer.pause();
-      else timer.start();
+    if (isRunning) {
+      if (isPaused) {
+        setIsPaused(!isPaused);
+        timer.start();
+      } else {
+        setIsPaused(!isPaused);
+        timer.pause();
+      }
     }
   }
 
@@ -34,14 +46,14 @@ function TaskCard () {
       </div>
       <div className="taskcard-timer-container">
         <button 
-          className={`timer-button ${timer.isRunning() ? "stop-state" : "start-state"}`}
+          className={`timer-button ${isRunning ? "stop-state" : "start-state"}`}
           onClick={() => startStop()}
-        >{timer.isRunning() ? "FINISH" : "START"}</button>
+        >{isRunning ? "FINISH" : "START"}</button>
         <p>{timer.getTimeValues().toString(['minutes', 'seconds'])}</p>
         <button 
-        className={`opts-button ${timer.isPaused() ? "resume-state" : "pause-state"}`}
+        className={`opts-button ${isPaused ? "resume-state" : "pause-state"}`}
         onClick={() => pauseResume()}
-        >{timer.isPaused() ? "RESUME" : "PAUSE"}</button>
+        >{isPaused ? "RESUME" : "PAUSE"}</button>
       </div>
     </div>
   );
