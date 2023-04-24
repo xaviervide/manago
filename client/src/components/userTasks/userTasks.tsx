@@ -1,5 +1,5 @@
 import './userTasks.css';
-
+import { createUserTask } from '../../apiClient';
 
 interface UserTasksProps {
   tasks: object [],
@@ -8,9 +8,12 @@ interface UserTasksProps {
 
 function UserTasks ({tasks, changeActiveWorkspace}: UserTasksProps) {
 
-  function handleAddTask () {
+  async function handleAddTask () {
     const newTaskName = prompt('Please enter the name of the new task');
     const newTaskDescription = prompt('Provide a description for the new task');
+    const newTask = {taskName: newTaskName || '', taskDescription: newTaskDescription || ''};
+    if(newTaskName?.trim() && newTaskDescription?.trim())
+      await createUserTask(JSON.parse(sessionStorage.getItem('user-data') || '')._id, newTask);
   }
 
   return (

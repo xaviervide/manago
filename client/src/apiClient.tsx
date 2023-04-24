@@ -57,7 +57,7 @@ export async function fetchUserData (userID: string) {
   }
 }
 
-export async function crateUserTask (userID: string, newTask: Task) {
+export async function createUserTask (userID: string, newTask: Task) {
   try {
     const addedTask = await fetch((serverURL + 'new/task'), {
       method: 'POST',
@@ -73,8 +73,20 @@ export async function crateUserTask (userID: string, newTask: Task) {
   }
 }
 
-export async function updateUserTasks (userID: string) {
+export async function updateUserTask (taskID: string, updatedTaskTime: string) {
+  try {
+    const updatedTask = await fetch((serverURL + 'update/task'), {
+      method: 'POST',
+      body: JSON.stringify({taskID: taskID, updatedTaskTime: updatedTaskTime}),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(res => res.json())
 
+  } catch (err) {
+    throw new Error(err as string);
+  }
 }
 
 export async function updateUserProjects (userID: string) {

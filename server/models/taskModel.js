@@ -5,7 +5,7 @@ const taskSchema = mongoose.Schema({
   taskDescription: String,
   totalTaskTime: {
     type: String,
-    default: "00:00"
+    default: "00:00:00"
   }
 })
 

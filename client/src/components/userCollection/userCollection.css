@@ -2,13 +2,21 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+  min-height: 10vh;
   max-height: 40vh;
   box-sizing: border-box;
-  padding: 2vh 0.8vw 0 0.8vw;
+  padding: 3vh 1.5vw 0 1.5vw;
   border-bottom: 1px solid gray;
 }
 
+.usercollection-label-container {
+  display: flex;
+  justify-content: space-between;
+}
 
+.usercollection-label-container div:hover {
+  cursor: pointer;
+}
 
 .usercollection-label {
   font-size: 1.3rem;

@@ -20,6 +20,7 @@ function UserCollection ({isProjects, collectionProjects, changeActiveWorkspace}
     <div className="usercollection-container">
       <div className="usercollection-label-container">
         <h3 className="usercollection-label" onClick={() => collapseCollection()}>Your {isProjects ? "Projects" : "Teams"}</h3>
+        <div className="usertasks-add-btn">+</div>
       </div>
       {!isCollapsed && 
         <div className="usercollection-projects-container">

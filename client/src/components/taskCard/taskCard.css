@@ -69,6 +69,10 @@
   text-align: center;
 }
 
+.taskcard-totaltime-container p {
+  min-width: 4vw;
+}
+
 .start-state {
   border: 3px solid green;
   background-color: rgb(0, 171, 0);

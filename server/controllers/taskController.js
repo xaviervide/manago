@@ -12,7 +12,7 @@ export const addUserTask = async (req, res) => {
     const updatedUser = await User.findByIdAndUpdate(userID, {$push: {taskIds: taskToAdd._id}});
     const addedTask = await taskToAdd.save().then();
 
-    res.status(201).json();
+    res.status(201).json(addedTask);
 
   } catch (err) {
     console.log('ERROR ADDING USER TASK: ', err);

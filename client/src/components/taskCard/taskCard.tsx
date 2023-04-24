@@ -1,25 +1,30 @@
 import { useState } from 'react';
 import './taskCard.css';
 import useTimer from 'easytimer-react-hook';
+import { updateUserTask } from '../../apiClient';
+import CalculateTotalTime from '../../helpers/calculateTotalTime';
 
 interface TaskCardProps {
   taskName: string,
   taskDescription: string,
-  totalTaskTime: string
+  totalTaskTime: string,
+  taskID: string
 }
 
-function TaskCard ({taskName, taskDescription, totalTaskTime} : TaskCardProps) {
+function TaskCard ({taskName, taskDescription, totalTaskTime, taskID} : TaskCardProps) {
 
   const [timer, isTargetAchieved] = useTimer();
   const [isRunning, setIsRunning] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
 
-  function startStop () {
+  async function startStop () {
     if (isRunning) {
       if(window.confirm('Are you sure you want to end this timer?')) {
+        const finalTimeTemp = CalculateTotalTime(totalTaskTime, timer.getTimeValues().toString());
         setIsRunning(!isRunning);
         setIsPaused(false);
         timer.stop();
+        await updateUserTask(taskID, finalTimeTemp).then(() => console.log('added'));
       } else {
         setIsPaused(true);
         timer.pause();
@@ -68,7 +73,9 @@ function TaskCard ({taskName, taskDescription, totalTaskTime} : TaskCardProps) {
         >{isPaused ? "RESUME" : "PAUSE"}</button>
       </div>
       <div className="taskcard-totaltime-container">
-        <p>{totalTaskTime}</p>
+        <p>{totalTaskTime.split(':')[0] === '00' ?
+        totalTaskTime.slice(3, 8) :
+        totalTaskTime.slice(0, 5)}</p>
       </div>
     </div>
   );

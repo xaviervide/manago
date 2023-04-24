@@ -10,7 +10,7 @@ import { fetchUserData } from '../../apiClient';
 interface WorkspacesProps {
   projects: {projectName: string, projectDescription: string}[],
   teams: {projectName: string, projectDescription: string}[], 
-  tasks: {taskName: string, taskDescription: string, totalTaskTime: string} []
+  tasks: {taskName: string, taskDescription: string, totalTaskTime: string, taskID: string} []
 }
 
 function Dashboard () {
