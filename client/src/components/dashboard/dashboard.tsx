@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react';
-import MainView from '../mainView/mainView';
 import './dashboard.css';
+import { fetchProjectData, fetchUserData } from '../../apiClient';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Workspaces from '../workspaces/workspaces';
 import Sidebar from '../sidebar/sidebar';
-import { fetchProjectData, fetchUserData } from '../../apiClient';
+import MainView from '../mainView/mainView';
 
 
 interface WorkspacesProps {
