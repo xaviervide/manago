@@ -4,13 +4,13 @@ import './dashboard.css';
 import { useNavigate } from 'react-router-dom';
 import Workspaces from '../workspaces/workspaces';
 import Sidebar from '../sidebar/sidebar';
-import { fetchUserData } from '../../apiClient';
+import { fetchProjectData, fetchUserData } from '../../apiClient';
 
 
 interface WorkspacesProps {
-  projects: {projectName: string, projectDescription: string}[],
-  teams: {projectName: string, projectDescription: string}[], 
-  tasks: {taskName: string, taskDescription: string, totalTaskTime: string, taskID: string} []
+  projects: {projectName: string, projectDescription: string, _id: string, currentEmployeesIds: [], currentTaskIds: []}[],
+  teams: {projectName: string, projectDescription: string, _id: string}[], 
+  tasks: {taskName: string, taskDescription: string, totalTaskTime: string, _id: string} []
 }
 
 function Dashboard () {
@@ -19,6 +19,7 @@ function Dashboard () {
 
   const [isWorkspaceShowing, setIsWorkspaceShowing] = useState(true);
   const [currUserData, setCurrUserData] = useState({} as WorkspacesProps);
+  const [currWSData, setCurrWSData] = useState({_id: '', projectName: '', projectDescription: '', currentEmployeesIds: [], currentTaskIds: []})
 
   const navigate = useNavigate();
 
@@ -31,8 +32,12 @@ function Dashboard () {
     setIsWorkspaceShowing(!isWorkspaceShowing);
   }
 
-  function changeActiveWorkspace (newWS : string) {
+  async function changeActiveWorkspace (newWS : string, _id: string) {
     setActiveWorkspace(newWS);
+    if(_id.trim().length !== 0) {
+      await fetchProjectData(_id)
+        .then(res => setCurrWSData(res));
+    } 
   }
 
   async function handleLoad () {

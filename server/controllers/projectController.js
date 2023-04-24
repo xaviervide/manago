@@ -18,3 +18,16 @@ export const createProject = async (req, res) => {
     res.status(500).json({msg: err});
   }
 }
+
+export const getProjectData = async (req, res) => {
+  try {
+    const projectID = req.params.projectId;
+    const projectDocument = await Project.findById(projectID);
+
+    res.status(201).json(projectDocument);
+
+  } catch (err) {
+    console.log('ERROR GETTING PROJECT DATA: ', err);
+    res.status(500).json({msg: err});
+  }
+}

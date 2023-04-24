@@ -89,6 +89,18 @@ export async function updateUserTask (taskID: string, updatedTaskTime: string) {
   }
 }
 
+export async function fetchProjectData (projectID: string) {
+  try {
+    const currWSData = await fetch((serverURL + `project/${projectID}`))
+      .then(res => res.json());
+
+    return currWSData;
+    
+  } catch (err) {
+    throw new Error(err as string);
+  }
+}
+
 export async function updateUserProjects (userID: string) {
 
 }

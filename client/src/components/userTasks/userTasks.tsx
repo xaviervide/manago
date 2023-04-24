@@ -3,7 +3,7 @@ import { createUserTask } from '../../apiClient';
 
 interface UserTasksProps {
   tasks: object [],
-  changeActiveWorkspace: (newWS: string) => void
+  changeActiveWorkspace: (newWS: string, _id:string) => void
 }
 
 function UserTasks ({tasks, changeActiveWorkspace}: UserTasksProps) {
@@ -17,7 +17,7 @@ function UserTasks ({tasks, changeActiveWorkspace}: UserTasksProps) {
   }
 
   return (
-    <div className="usertasks-container" onClick={() => changeActiveWorkspace('Your')}>
+    <div className="usertasks-container" onClick={() => changeActiveWorkspace('Your', '')}>
       <div className="usertasks-info-container">
         <h3 className="usertasks-label">Your Tasks</h3>
         <p className="usertasks-info">Tasks: {tasks? tasks.length : 0} | 

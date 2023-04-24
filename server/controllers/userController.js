@@ -4,7 +4,7 @@ import Task from '../models/taskModel.js';
 
 export const getUserData = async (req, res) => {
   try {
-    const userID = req.params.id;
+    const userID = req.params.userId;
     const userDocument = await User.findById(userID);
 
     const userProjects = await Project.find({"_id": {"$in": userDocument.projectIds}});

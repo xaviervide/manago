@@ -4,11 +4,11 @@ import './workspaces.css';
 
 interface WorkspacesProps {
   userData: {
-    projects: {projectName: string, projectDescription: string}[],
-    teams: {projectName: string, projectDescription: string}[]
+    projects: {projectName: string, projectDescription: string, _id: string}[],
+    teams: {projectName: string, projectDescription: string, _id: string}[]
     tasks: object [],
   }
-  changeActiveWorkspace: (newWS : string) => void
+  changeActiveWorkspace: (newWS : string, _id: string) => void
 }
 
 

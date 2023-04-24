@@ -5,7 +5,7 @@ import './mainView.css';
 interface MainViewProps {
   title: string,
   numOfTasks: number,
-  tasks: {taskName: string, taskDescription: string, totalTaskTime: string, taskID: string} []
+  tasks: {taskName: string, taskDescription: string, totalTaskTime: string, _id: string} []
 }
 
 function MainView ({title, numOfTasks, tasks} : MainViewProps) {
