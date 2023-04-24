@@ -14,10 +14,10 @@ interface WorkspacesProps {
 
 function Dashboard () {
 
-  const [activeWorkspace, setActiveWorkspace] = useState('')
+  const [activeWorkspace, setActiveWorkspace] = useState('Your')
 
   const [isWorkspaceShowing, setIsWorkspaceShowing] = useState(false);
-  const [currUserData, setCurrUserData] = useState();
+  const [currUserData, setCurrUserData] = useState({} as WorkspacesProps);
 
   const navigate = useNavigate();
 
@@ -49,9 +49,11 @@ function Dashboard () {
     <div className="dashboard-container" onClick={async () => await handleLoad()}>
       <Sidebar toggleWorkspace={toggleWorkspace}></Sidebar>
       {currUserData && isWorkspaceShowing && 
-      <Workspaces userData={currUserData}></Workspaces>
+      <Workspaces userData={currUserData} changeActiveWorkspace={changeActiveWorkspace}></Workspaces>
       }
-      <MainView></MainView>
+      {currUserData && 
+        <MainView title={activeWorkspace} numOfTasks={currUserData.tasks?.length}></MainView>
+      }
     </div>
   );
 }

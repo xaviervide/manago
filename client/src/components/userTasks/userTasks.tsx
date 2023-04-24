@@ -2,17 +2,18 @@ import './userTasks.css';
 
 
 interface UserTasksProps {
-  tasks: object []
+  tasks: object [],
+  changeActiveWorkspace: (newWS: string) => void
 }
 
-function UserTasks (tasks: UserTasksProps) {
+function UserTasks ({tasks, changeActiveWorkspace}: UserTasksProps) {
 
 
   return (
-    <div className="usertasks-container">
+    <div className="usertasks-container" onClick={() => changeActiveWorkspace('Your')}>
       <div className="usertasks-info-container">
         <h3 className="usertasks-label">Your Tasks</h3>
-        <p className="usertasks-info">Tasks: {tasks.tasks? tasks.tasks.length : 0} | 
+        <p className="usertasks-info">Tasks: {tasks? tasks.length : 0} | 
         Time: 12h10m</p>
       </div>
       <div className="usertasks-btn-container">

@@ -5,10 +5,10 @@ import './userCollection.css';
 interface UserCollectionProps {
   isProjects: boolean,
   collectionProjects: object [],
-  // changeActiveWS: () => void
+  changeActiveWorkspace: (newWS: string) => void
 }
 
-function UserCollection ({isProjects, collectionProjects}: UserCollectionProps) {
+function UserCollection ({isProjects, collectionProjects, changeActiveWorkspace}: UserCollectionProps) {
 
   const [isCollapsed, setIsCollapsed] = useState(true);
 
@@ -24,7 +24,7 @@ function UserCollection ({isProjects, collectionProjects}: UserCollectionProps) 
       {!isCollapsed && 
         <div className="usercollection-projects-container">
           {collectionProjects && collectionProjects.length > 0 &&
-            collectionProjects.map(el => <WsCard></WsCard>)
+            collectionProjects.map(el => <WsCard projectName={JSON.parse(JSON.stringify(el)).name} projectDescription={JSON.stringify(el)} changeActiveWorkspace={changeActiveWorkspace}></WsCard>)
           }
         </div>
       }

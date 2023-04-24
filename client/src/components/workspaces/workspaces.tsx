@@ -3,18 +3,21 @@ import UserTasks from '../userTasks/userTasks';
 import './workspaces.css';
 
 interface WorkspacesProps {
-  projects: object [],
-  teams: object [],
-  tasks: object []
+  userData: {
+    projects: object [],
+    teams: object [],
+    tasks: object [],
+  }
+  changeActiveWorkspace: (newWS : string) => void
 }
 
 
-function Workspaces (userData : any) {
+function Workspaces ({userData, changeActiveWorkspace} : WorkspacesProps) {
   return (
     <div className="workspaces-container">
-      <UserTasks tasks={userData.tasks}></UserTasks>
-      <UserCollection isProjects={true} collectionProjects={userData.projects}></UserCollection>
-      <UserCollection isProjects={false} collectionProjects={userData.teams}></UserCollection>
+      <UserTasks tasks={userData.tasks} changeActiveWorkspace={changeActiveWorkspace}></UserTasks>
+      <UserCollection isProjects={true} collectionProjects={userData.projects} changeActiveWorkspace={changeActiveWorkspace}></UserCollection>
+      <UserCollection isProjects={false} collectionProjects={userData.teams} changeActiveWorkspace={changeActiveWorkspace}></UserCollection>
     </div>
   );
 }

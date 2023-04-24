@@ -1,17 +1,18 @@
 import './wsCard.css';
 
 interface wsCardProps {
-  prjectName: string,
+  projectName: string,
   projectDescription: string,
+  changeActiveWorkspace: (newWS: string) => void
 }
 
-function WsCard () {
+function WsCard ({projectName, projectDescription, changeActiveWorkspace}: wsCardProps) {
   return (
     <div className="wscard-container">
-      <div className="wscard">
+      <div className="wscard" onClick={() => changeActiveWorkspace(projectName)}>
         <div className="wscard-info">
-          <h4>Project Name</h4>
-          <p>Project Description</p>
+          <h4>{projectName}</h4>
+          <p>{projectDescription}</p>
         </div>
         <p>{"\u2B9E"}</p>
       </div>
