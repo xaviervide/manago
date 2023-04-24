@@ -2,15 +2,13 @@ import './wsLabel.css';
 
 interface WsLabelProps {
   wsName: string,
-  numOfMembers: number,
-  totalHours: number
 }
 
-function WsLabel () {
+function WsLabel ({wsName} : WsLabelProps) {
   return (
     <div className="wslabel-container">
       <div className="wslabel-info">
-        <h2>Current Tasks</h2>
+        <h2>{wsName === 'Your' ? wsName : wsName + "'s"} Tasks</h2>
         <p>Members: 7 | Total Hours: 132</p>
       </div>
     </div>

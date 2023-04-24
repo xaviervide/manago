@@ -9,7 +9,7 @@ interface MainViewProps {
 function MainView () {
   return (
     <div className="mainview-container">
-      <WsLabel></WsLabel>
+      <WsLabel wsName="Xavi"></WsLabel>
       <CurrentTasks></CurrentTasks>
     </div>
   );

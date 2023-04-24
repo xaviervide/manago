@@ -1,17 +1,19 @@
 import './userTasks.css';
 
+
 interface UserTasksProps {
-  numOfTasks: string,
-  totalTime: string
+  tasks: object []
 }
 
-function UserTasks () {
+function UserTasks (tasks: UserTasksProps) {
+
 
   return (
     <div className="usertasks-container">
       <div className="usertasks-info-container">
         <h3 className="usertasks-label">Your Tasks</h3>
-        <p className="usertasks-info">Tasks: 3 | Time: 12h10m</p>
+        <p className="usertasks-info">Tasks: {tasks.tasks? tasks.tasks.length : 0} | 
+        Time: 12h10m</p>
       </div>
       <div className="usertasks-btn-container">
         <div className="usertasks-add-btn">+</div>

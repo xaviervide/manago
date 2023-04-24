@@ -4,11 +4,11 @@ import './userCollection.css';
 
 interface UserCollectionProps {
   isProjects: boolean,
-  // collectionProjects: object [],
+  collectionProjects: object [],
   // changeActiveWS: () => void
 }
 
-function UserCollection ({isProjects} : UserCollectionProps) {
+function UserCollection ({isProjects, collectionProjects}: UserCollectionProps) {
 
   const [isCollapsed, setIsCollapsed] = useState(true);
 
@@ -23,14 +23,9 @@ function UserCollection ({isProjects} : UserCollectionProps) {
       </div>
       {!isCollapsed && 
         <div className="usercollection-projects-container">
-          <WsCard></WsCard>
-          <WsCard></WsCard>
-          <WsCard></WsCard>
-          <WsCard></WsCard>
-          <WsCard></WsCard>
-          <WsCard></WsCard>
-          <WsCard></WsCard>
-          <WsCard></WsCard>
+          {collectionProjects && collectionProjects.length > 0 &&
+            collectionProjects.map(el => <WsCard></WsCard>)
+          }
         </div>
       }
     </div>
