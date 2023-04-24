@@ -1,7 +1,7 @@
 import User from "../models/userModel.js";
 import Task from "../models/taskModel.js";
 
-export const addUserTask = async (req, res) => {
+export const createTask = async (req, res) => {
   try {
     const {userID, taskName, taskDescription} = req.body;
     const taskToAdd = new Task({
@@ -20,7 +20,7 @@ export const addUserTask = async (req, res) => {
   }
 }
 
-export const updateUserTask = async (req, res) => {
+export const updateTaskData = async (req, res) => {
   try {
     const {taskID, updatedTaskTime} = req.body;
     const updatedTask = await Task.findByIdAndUpdate(taskID, {totalTaskTime: updatedTaskTime});
@@ -29,6 +29,15 @@ export const updateUserTask = async (req, res) => {
 
   } catch (err) {
     console.log('ERROR UPDATING USER TASK: ', err);
+    res.status(500).json({msg: err});
+  }
+}
+
+export const getTaskData = async (req, res) => {
+  try {
+
+  } catch (err) {
+    console.log('ERROR GETTING TASK DATA: ', err);
     res.status(500).json({msg: err});
   }
 }

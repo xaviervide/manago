@@ -1,12 +1,10 @@
+import { Project } from "./interfaces/Project";
+import { Team } from "./interfaces/Team";
+import { Task } from "./interfaces/Task";
 import { UserLogin } from "./schemas/UserLogin";
 import { UserRegister } from "./schemas/UserRegister";
 
 const serverURL = 'http://localhost:3001/';
-
-interface Task {
-  taskName: string,
-  taskDescription: string
-}
 
 
 export async function loginUser (userCredentials : UserLogin) {
@@ -57,22 +55,6 @@ export async function fetchUserData (userID: string) {
   }
 }
 
-export async function createUserTask (userID: string, newTask: Task) {
-  try {
-    const addedTask = await fetch((serverURL + 'new/task'), {
-      method: 'POST',
-      body: JSON.stringify({userID: userID, taskName: newTask.taskName, taskDescription: newTask.taskDescription}),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-    .then(res => res.json())
-
-  } catch (err) {
-    throw new Error(err as string);
-  }
-}
-
 export async function updateUserTask (taskID: string, updatedTaskTime: string) {
   try {
     const updatedTask = await fetch((serverURL + 'update/task'), {
@@ -101,10 +83,59 @@ export async function fetchProjectData (projectID: string) {
   }
 }
 
-export async function updateUserProjects (userID: string) {
+export async function createTask (userID: string, newTask: Task) {
+  try {
+    const addedTask = await fetch((serverURL + 'new/task'), {
+      method: 'POST',
+      body: JSON.stringify({userID: userID, 
+        taskName: newTask.taskName, 
+        taskDescription: newTask.taskDescription
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(res => res.json())
 
+  } catch (err) {
+    throw new Error(err as string);
+  }
 }
 
-export async function updateUserTeams (userID: string) {
+export async function createProject (userID: string, newProject: Project) {
+  try {
+    const createdProject = await fetch((serverURL + 'new/project'), {
+      method: 'POST',
+      body: JSON.stringify({userID: userID, 
+        projectName: newProject.projectName, 
+        projectDescription: newProject.projectDescription
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(res => res.json())
 
+  } catch (err) {
+    throw new Error(err as string);
+  }
+}
+
+export async function createTeam (userID: string, newTeam: Team) {
+  try {
+    const createdProject = await fetch((serverURL + 'new/team'), {
+      method: 'POST',
+      body: JSON.stringify({userID: userID, 
+        teamName: newTeam.teamName, 
+        teamDescription: newTeam.teamDescription
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(res => res.json())
+
+  } catch (err) {
+    throw new Error(err as string);
+  }
 }

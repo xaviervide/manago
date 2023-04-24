@@ -3,16 +3,8 @@ import mongoose from '../mongoosedb.js';
 const projectSchema = mongoose.Schema({
   projectName: String,
   projectDescription: String,
-  projectCode: {
-    type: String,
-    unique: true
-  },
-  currentEmployeesIds: {
-    type: Array,
-    default: []
-  },
   currentTaskIds: {
-    type: Array,
+    type: [String],
     default: []
   }
 })
