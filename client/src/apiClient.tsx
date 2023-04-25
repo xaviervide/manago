@@ -151,3 +151,19 @@ export async function createTeam (userID: string, newTeam: Team) {
     throw new Error(err as string);
   }
 }
+
+export async function deleteTask (taskID: string) {
+  try {
+    const deletedTask = await fetch((serverURL + `delete/${taskID}`), {
+      method: 'DELETE',
+      body: JSON.stringify({taskID: taskID}),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(res => res.json());
+
+  } catch (err) {
+    throw new Error(err as string);
+  }
+}

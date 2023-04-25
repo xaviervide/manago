@@ -5,14 +5,14 @@ import './mainView.css';
 
 interface MainViewProps {
   title: string,
-  numOfTasks: number,
-  tasks: Task []
+  tasks: Task [],
+  toggleLoading: () => void
 }
 
-function MainView ({title, numOfTasks, tasks} : MainViewProps) {
+function MainView ({title, tasks, toggleLoading} : MainViewProps) {
   return (
     <div className="mainview-container">
-      <WsLabel wsName={title} numOfTasks={numOfTasks}></WsLabel>
+      <WsLabel wsName={title} toggleLoading={toggleLoading}></WsLabel>
       <CurrentTasks tasks={tasks}></CurrentTasks>
     </div>
   );

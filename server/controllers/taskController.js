@@ -41,3 +41,16 @@ export const getTaskData = async (req, res) => {
     res.status(500).json({msg: err});
   }
 }
+
+export const deleteTask = async (req, res) => {
+  try {
+    const taskID = req.params.taskId;
+    const deletedTask = await Task.findByIdAndDelete(taskID);
+
+    res.status(201).json(deletedTask);
+
+  } catch (err) {
+    console.log('ERROR DELETING TASK DATA: ', err);
+    res.status(500).json({msg: err});
+  }
+}

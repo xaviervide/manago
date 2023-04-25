@@ -2,6 +2,27 @@
   display: flex;
 }
 
+.wslabel-info {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding: 1vh 2vw 0 2vw;
+}
+
+.wslabel-info button {
+  min-width: 7vw;
+  border: 3px solid rgb(0, 0, 0);
+  background-color: rgb(255, 255, 255);
+  border-radius: 5px;
+  font-weight: 900;
+  font-size: 1rem;
+}
+
+.wslabel-info button:hover {
+  cursor: pointer;
+}
+
 .wslabel-info h2{
   font-size: 3rem;
 }

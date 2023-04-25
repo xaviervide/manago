@@ -2,3 +2,7 @@
   height: 100vh;
   display: flex;
 }
+
+.dashboard-workspace-container {
+  height: 100vh;
+}

@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: space-between;
   box-sizing: border-box;
-  padding: 0 3vw;
+  padding: 0 2vw;
   height: 12vh;
   background-color: rgb(239, 239, 239);
   border-bottom: 1px solid lightgray;
@@ -11,6 +11,7 @@
 
 .taskcard-info {
   min-width: 20vw;
+  max-width: 20vw;
 }
 
 .taskcard-info-container {
@@ -71,6 +72,26 @@
 
 .taskcard-totaltime-container p {
   min-width: 4vw;
+}
+
+.taskcard-totaltime-container {
+  display: flex;
+  gap: 1vw;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.taskcard-totaltime-container button{
+  border: 3px solid darkred;
+  background-color: red;
+  box-sizing: border-box;
+  padding: 2px;
+  font-weight: 900;
+  border-radius: 5px;
+}
+
+.taskcard-totaltime-container button:hover{
+  cursor: pointer;
 }
 
 .start-state {

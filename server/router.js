@@ -2,7 +2,7 @@ import express from 'express';
 import { getUserData } from './controllers/userController.js';
 import { registerUser, loginUser } from './controllers/auth.js';
 import { createProject, getProjectData, updateProjectData } from './controllers/projectController.js';
-import { createTask, getTaskData, updateTaskData } from './controllers/taskController.js';
+import { createTask, getTaskData, updateTaskData, deleteTask } from './controllers/taskController.js';
 import { createTeam, getTeamData, updateTeamData } from './controllers/teamController.js';
 
 const router = express.Router();
@@ -23,6 +23,7 @@ router.post('/update/project', updateProjectData);
 router.get('/task/:taskId', getTaskData);
 router.post('/new/task', createTask);
 router.post('/update/task', updateTaskData);
+router.delete('/delete/:taskId', deleteTask);
 
 /* TEAM ROUTES */
 router.get('/team/:teamId', getTeamData);

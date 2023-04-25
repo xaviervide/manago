@@ -1,7 +1,7 @@
 import './taskCard.css';
 import { useState } from 'react';
 import useTimer from 'easytimer-react-hook';
-import { updateUserTask } from '../../apiClient';
+import { deleteTask, updateUserTask } from '../../apiClient';
 import CalculateTotalTime from '../../helpers/calculateTotalTime';
 import { Task } from '../../interfaces/Task';
 
@@ -46,11 +46,15 @@ function TaskCard ({cardContent} : TaskCardProps) {
     }
   }
 
-  function handleDelete () {
+  function handleDeleteTimer () {
     timer.reset();
     timer.stop();
     setIsPaused(false);
     setIsRunning(false);
+  }
+
+  async function handleDeleteTask () {
+    await deleteTask(cardContent._id as string);
   }
 
   return (
@@ -73,7 +77,7 @@ function TaskCard ({cardContent} : TaskCardProps) {
         >{isPaused ? "RESUME" : "PAUSE"}</button>
         {isPaused && 
         <button className="delete-button"
-        onClick={() => handleDelete()}
+        onClick={() => handleDeleteTimer()}
         >&#128465;</button>
         }
       </div>
@@ -81,6 +85,7 @@ function TaskCard ({cardContent} : TaskCardProps) {
         <p>{cardContent.totalTaskTime?.split(':')[0] === '00' ?
         cardContent.totalTaskTime.slice(3, 8) :
         cardContent.totalTaskTime?.slice(0, 5)}</p>
+        <button onClick={() => handleDeleteTask()}>X</button>
       </div>
     </div>
   );

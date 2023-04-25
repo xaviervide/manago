@@ -27,6 +27,8 @@ function Dashboard () {
   const [currWSData, setCurrWSData] = useState({} as Task[]);
   const [tempWSData, setTempWSData] = useState({} as Task[]);
 
+  const [activeWSTasks, setActiveWSTasks] = useState([] as Task[]);
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -44,10 +46,20 @@ function Dashboard () {
   async function changeActiveWorkspace (newWS : string, _id: string) {
     setActiveWorkspace(newWS);
     if (newWS === 'Your') {
-      setTempWSData(currUserData.tasks);
+      setActiveWSTasks(currUserData.tasks);
     } else {
-      await fetchProjectData(_id)
-      .then(res => setTempWSData(res))
+      currUserData.teams.forEach(el => {
+        if(el.title === newWS){
+          setActiveWSTasks(el.teamTasks as Task[])
+          return;
+        }
+      })
+      currUserData.projects.forEach(el => {
+        if(el.title === newWS) {
+          setActiveWSTasks(el.projectTasks as Task[])
+          return;
+        }
+      })
     }
   }
 
@@ -62,10 +74,10 @@ function Dashboard () {
   async function handleLoad () {
     const userID = JSON.parse(sessionStorage.getItem('user-data') || '')._id;
     try {
+      const userData = await fetchUserData(userID);
+      setActiveWSTasks(userData.tasks);
       if(activeWorkspace === 'Your') {
-        const userData = await fetchUserData(userID);
         setCurrUserData(userData);
-        setCurrWSData(userData.tasks);
       }
     } catch (err) {
       window.location.reload();
@@ -77,11 +89,11 @@ function Dashboard () {
     <div className="dashboard-container" onClick={async () => await handleLoad()}>
       {isLoading && <Loading></Loading>}
       <Sidebar toggleWorkspace={toggleWorkspace}></Sidebar>
-      {currUserData && isWorkspaceShowing && 
-      <Workspaces userData={currUserData} changeActiveWorkspace={changeActiveWorkspace} toggleLoading={toggleLoading}></Workspaces>
-      }
+      <div className="dashboard-workspace-container" style={{display: isWorkspaceShowing? 'inherit' : 'none'}}>
+        <Workspaces userData={currUserData} changeActiveWorkspace={changeActiveWorkspace} toggleLoading={toggleLoading}></Workspaces>
+      </div>
       {currUserData && 
-        <MainView title={activeWorkspace} numOfTasks={currWSData? currWSData.length : 0} tasks={tempWSData}></MainView>
+        <MainView toggleLoading={toggleLoading} title={activeWorkspace} tasks={activeWSTasks}></MainView>
       }
     </div>
   );
