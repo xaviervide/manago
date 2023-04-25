@@ -6,12 +6,15 @@ import Workspaces from '../workspaces/workspaces';
 import Sidebar from '../sidebar/sidebar';
 import MainView from '../mainView/mainView';
 import Loading from '../loading/loading';
+import { Project } from '../../interfaces/Project';
+import { Team } from '../../interfaces/Team';
+import { Task } from '../../interfaces/Task';
 
 
 interface WorkspacesProps {
-  projects: {projectName: string, projectDescription: string, _id: string, currentEmployeesIds: [], currentTaskIds: []}[],
-  teams: {projectName: string, projectDescription: string, _id: string}[], 
-  tasks: {taskName: string, taskDescription: string, totalTaskTime: string, _id: string} []
+  projects: Project[],
+  teams: Team[], 
+  tasks: Task []
 }
 
 function Dashboard () {
@@ -50,7 +53,7 @@ function Dashboard () {
     await handleLoad();
     setTimeout(() => {
       setIsLoading(false);
-    }, 1000)
+    }, 300)
   }
 
   async function handleLoad () {

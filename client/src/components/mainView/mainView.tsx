@@ -1,3 +1,4 @@
+import { Task } from '../../interfaces/Task';
 import CurrentTasks from '../currentTasks/currentTasks';
 import WsLabel from '../wsLabel/wsLabel';
 import './mainView.css';
@@ -5,7 +6,7 @@ import './mainView.css';
 interface MainViewProps {
   title: string,
   numOfTasks: number,
-  tasks: {taskName: string, taskDescription: string, totalTaskTime: string, _id: string} []
+  tasks: Task []
 }
 
 function MainView ({title, numOfTasks, tasks} : MainViewProps) {

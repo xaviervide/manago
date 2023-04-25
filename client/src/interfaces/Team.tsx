@@ -1,4 +1,5 @@
 export interface Team {
-  teamName: string | null,
-  teamDescription: string | null,
+  _id?: string,
+  title: string | null,
+  description: string | null,
 }

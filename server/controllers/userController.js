@@ -11,7 +11,13 @@ export const getUserData = async (req, res) => {
     const userDocument = await User.findById(userID);
 
     const userTasks = await Task.find({"_id": {"$in": userDocument.taskIds}});
-    const userProjects = await Project.find({"_id": {"$in": userDocument.projectIds}});
+    const userProjects = await Project
+      .find({"_id": {"$in": userDocument.projectIds}})
+      // .populate({
+      //   path: 'projectTasks',
+      //   model: Task
+      // })
+      // console.log(userProjects)
     const userTeams = await Team.find({"_id": {"$in": userDocument.teamIds}});
 
     

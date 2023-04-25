@@ -3,11 +3,11 @@ import mongoose from "../mongoosedb.js";
 const teamSchema = mongoose.Schema({
   teamName: String,
   teamDescription: String,
-  teamTasksIds: {
+  teamTasks: {
     type: [String],
     default: []
   },
-  currentMemberIds: {
+  teamMembers: {
     type: [String],
     default: []
   } 

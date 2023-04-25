@@ -1,4 +1,6 @@
 export interface Project {
-  projectName: string | null,
-  projectDescription: string | null
+  _id?: string,
+  title: string | null,
+  description: string | null,
+  projectTasks?: string []
 }

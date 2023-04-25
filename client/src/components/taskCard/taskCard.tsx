@@ -3,10 +3,14 @@ import { useState } from 'react';
 import useTimer from 'easytimer-react-hook';
 import { updateUserTask } from '../../apiClient';
 import CalculateTotalTime from '../../helpers/calculateTotalTime';
-import { TaskCardProps } from '../../interfaces/props/TaskCardProps';
+import { Task } from '../../interfaces/Task';
+
+interface TaskCardProps {
+  cardContent: Task
+}
 
 
-function TaskCard ({taskName, taskDescription, totalTaskTime, taskID} : TaskCardProps) {
+function TaskCard ({cardContent} : TaskCardProps) {
 
   const [timer, isTargetAchieved] = useTimer();
   const [isRunning, setIsRunning] = useState(false);
@@ -15,11 +19,11 @@ function TaskCard ({taskName, taskDescription, totalTaskTime, taskID} : TaskCard
   async function startStop () {
     if (isRunning) {
       if(window.confirm('Are you sure you want to end this timer?')) {
-        const finalTimeTemp = CalculateTotalTime(totalTaskTime, timer.getTimeValues().toString());
+        const finalTimeTemp = CalculateTotalTime(cardContent.totalTaskTime as string, timer.getTimeValues().toString());
         setIsRunning(!isRunning);
         setIsPaused(false);
         timer.stop();
-        await updateUserTask(taskID, finalTimeTemp).then(() => console.log('added'));
+        await updateUserTask(cardContent._id as string, finalTimeTemp).then(() => console.log('added'));
       } else {
         setIsPaused(true);
         timer.pause();
@@ -53,8 +57,8 @@ function TaskCard ({taskName, taskDescription, totalTaskTime, taskID} : TaskCard
     <div className="taskcard-container">
       <div className="taskcard-info-container">
         <div className="taskcard-info">
-          <h3>{taskName}</h3>
-          <p>{taskDescription}</p>
+          <h3>{cardContent.taskName}</h3>
+          <p>{cardContent.taskDescription}</p>
         </div>
       </div>
         <div className="taskcard-members-container">
@@ -80,9 +84,9 @@ function TaskCard ({taskName, taskDescription, totalTaskTime, taskID} : TaskCard
         }
       </div>
       <div className="taskcard-totaltime-container">
-        <p>{totalTaskTime.split(':')[0] === '00' ?
-        totalTaskTime.slice(3, 8) :
-        totalTaskTime.slice(0, 5)}</p>
+        <p>{cardContent.totalTaskTime?.split(':')[0] === '00' ?
+        cardContent.totalTaskTime.slice(3, 8) :
+        cardContent.totalTaskTime?.slice(0, 5)}</p>
       </div>
     </div>
   );

@@ -7,7 +7,7 @@ import { Team } from '../../interfaces/Team';
 
 interface UserCollectionProps {
   isProjects: boolean,
-  collectionProjects: {projectName: string, projectDescription: string, _id: string}[],
+  collectionProjects: Project[],
   changeActiveWorkspace: (newWS: string, _id: string) => void
 }
 
@@ -24,16 +24,16 @@ function UserCollection ({isProjects, collectionProjects, changeActiveWorkspace}
     const newElementDescription = prompt('Please provide a short description');
     if (isProjects) {
       const newProject : Project = {
-        projectName: newElementName,
-        projectDescription: newElementDescription
+        title: newElementName,
+        description: newElementDescription
       }
       if (newElementName?.trim().length && newElementDescription?.trim().length) {
         await createProject(JSON.parse(sessionStorage.getItem('user-data') || '')._id, newProject);
       }
     } else {
       const newTeam : Team = {
-        teamName: newElementName,
-        teamDescription: newElementDescription
+        title: newElementName,
+        description: newElementDescription
       }
       if (newElementName?.trim().length && newElementDescription?.trim().length) {
         await createTeam(JSON.parse(sessionStorage.getItem('user-data') || '')._id, newTeam);
@@ -52,7 +52,7 @@ function UserCollection ({isProjects, collectionProjects, changeActiveWorkspace}
       {!isCollapsed && 
         <div className="usercollection-projects-container">
           {collectionProjects && collectionProjects.length > 0 &&
-            collectionProjects.map(el => <WsCard _id={el._id} projectName={el.projectName} projectDescription={el.projectDescription} changeActiveWorkspace={changeActiveWorkspace}></WsCard>)
+            collectionProjects.map(el => <WsCard cardContent={el} changeActiveWorkspace={changeActiveWorkspace}></WsCard>)
           }
         </div>
       }
