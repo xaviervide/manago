@@ -6,10 +6,11 @@ import './userProjects.css';
 
 interface UserProjectsProps {
   projectArray: Project[],
-  changeActiveWorkspace: (wsName: string, _id: string) => void
+  changeActiveWorkspace: (wsName: string, _id: string) => void,
+  toggleLoading: () => void
 }
 
-function UserProjects ({projectArray, changeActiveWorkspace} : UserProjectsProps) {
+function UserProjects ({projectArray, changeActiveWorkspace, toggleLoading} : UserProjectsProps) {
 
   const [isCollapsed, setIsCollapsed] = useState(true);
 
@@ -27,6 +28,7 @@ function UserProjects ({projectArray, changeActiveWorkspace} : UserProjectsProps
     }
 
     if (newProjectName?.trim().length && newProjectDescription?.trim().length) {
+      toggleLoading();
       await createProject(JSON.parse(sessionStorage.getItem('user-data') || '')._id, newProject);
     }
   }

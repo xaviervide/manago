@@ -3,10 +3,10 @@ import User from '../models/userModel.js';
 
 export const createProject = async (req, res) => {
   try {
-    const {userID, projectName, projectDescription} = req.body;
+    const {userID, title, description} = req.body;
     const projectToAdd = new Project({
-      projectName,
-      projectDescription
+      title,
+      description
     })
 
     const updatedUser = await User.findByIdAndUpdate(userID, {$push: {projectIds: projectToAdd._id}});

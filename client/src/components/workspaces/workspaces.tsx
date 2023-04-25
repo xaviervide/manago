@@ -1,6 +1,5 @@
 import { Project } from '../../interfaces/Project';
 import { Team } from '../../interfaces/Team';
-import UserCollection from '../userCollection/userCollection';
 import UserProjects from '../userProjects/userProjects';
 import UserTasks from '../userTasks/userTasks';
 import UserTeams from '../userTeams/userTeams';
@@ -21,8 +20,8 @@ function Workspaces ({userData, changeActiveWorkspace, toggleLoading} : Workspac
   return (
     <div className="workspaces-container">
       <UserTasks tasks={userData.tasks} changeActiveWorkspace={changeActiveWorkspace} toggleLoading={toggleLoading}></UserTasks>
-      <UserProjects projectArray={userData.projects} changeActiveWorkspace={changeActiveWorkspace}></UserProjects>
-      <UserTeams teamArray={userData.teams} changeActiveWorkspace={changeActiveWorkspace}></UserTeams>
+      <UserProjects projectArray={userData.projects} changeActiveWorkspace={changeActiveWorkspace} toggleLoading={toggleLoading}></UserProjects>
+      <UserTeams teamArray={userData.teams} changeActiveWorkspace={changeActiveWorkspace} toggleLoading={toggleLoading}></UserTeams>
     </div>
   );
 }

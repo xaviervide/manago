@@ -6,10 +6,11 @@ import WsCard from '../wsCard/wsCard';
 
 interface UserTeamsProps {
   teamArray: Team[],
-  changeActiveWorkspace: (wsName: string, _id: string) => void
+  changeActiveWorkspace: (wsName: string, _id: string) => void,
+  toggleLoading: () => void
 }
 
-function UserTeams({teamArray, changeActiveWorkspace} : UserTeamsProps) {
+function UserTeams({teamArray, changeActiveWorkspace, toggleLoading} : UserTeamsProps) {
 
   const [isCollapsed, setIsCollapsed] = useState(true);
 
@@ -27,6 +28,7 @@ function UserTeams({teamArray, changeActiveWorkspace} : UserTeamsProps) {
     }
 
     if (newTeamName?.trim().length && newTeamDescription?.trim().length) {
+      toggleLoading();
       await createTeam(JSON.parse(sessionStorage.getItem('user-data') || '')._id, newProject);
     }
   }

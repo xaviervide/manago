@@ -23,7 +23,7 @@ function Dashboard () {
 
   const [isWorkspaceShowing, setIsWorkspaceShowing] = useState(true);
   const [currUserData, setCurrUserData] = useState({} as WorkspacesProps);
-  const [currWSData, setCurrWSData] = useState({_id: '', projectName: '', projectDescription: '', currentEmployeesIds: [], currentTaskIds: []})
+  const [currWSData, setCurrWSData] = useState({} as Task[]);
   const [isLoading, setIsLoading] = useState(true);
 
   const navigate = useNavigate();
@@ -61,6 +61,7 @@ function Dashboard () {
     try {
       const userData = await fetchUserData(userID);
       setCurrUserData(userData);
+      setCurrWSData(userData.tasks);
     } catch (err) {
       window.location.reload();
       alert('Something went wrong!');
@@ -75,7 +76,7 @@ function Dashboard () {
       <Workspaces userData={currUserData} changeActiveWorkspace={changeActiveWorkspace} toggleLoading={toggleLoading}></Workspaces>
       }
       {currUserData && 
-        <MainView title={activeWorkspace} numOfTasks={currUserData.tasks?.length} tasks={currUserData.tasks}></MainView>
+        <MainView title={activeWorkspace} numOfTasks={currWSData.length} tasks={currWSData}></MainView>
       }
     </div>
   );

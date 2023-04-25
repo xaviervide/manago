@@ -107,8 +107,8 @@ export async function createProject (userID: string, newProject: Project) {
     const createdProject = await fetch((serverURL + 'new/project'), {
       method: 'POST',
       body: JSON.stringify({userID: userID, 
-        projectName: newProject.title, 
-        projectDescription: newProject.description
+        title: newProject.title, 
+        description: newProject.description
       }),
       headers: {
         'Content-Type': 'application/json'
@@ -126,8 +126,8 @@ export async function createTeam (userID: string, newTeam: Team) {
     const createdProject = await fetch((serverURL + 'new/team'), {
       method: 'POST',
       body: JSON.stringify({userID: userID, 
-        teamName: newTeam.title, 
-        teamDescription: newTeam.description
+        title: newTeam.title, 
+        description: newTeam.description
       }),
       headers: {
         'Content-Type': 'application/json'

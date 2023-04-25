@@ -3,10 +3,10 @@ import User from '../models/userModel.js';
 
 export const createTeam = async (req, res) => {
   try {
-    const {userID, teamName, teamDescription} = req.body;
+    const {userID, title, description} = req.body;
     const teamToAdd = new Team({
-      teamName,
-      teamDescription
+      title,
+      description
     })
 
     const updatedUser = await User.findByIdAndUpdate(userID, {$push: {teamIds: teamToAdd._id}});
