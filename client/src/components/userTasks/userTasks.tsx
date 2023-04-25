@@ -3,33 +3,14 @@ import { createTask } from '../../apiClient';
 import { Task } from '../../interfaces/Task';
 
 interface UserTasksProps {
-  tasks: object [],
-  changeActiveWorkspace: (newWS: string, _id:string) => void,
-  toggleLoading: () => void
+  changeActiveWorkspace: (newWS: string, _id:string) => void
 }
 
-function UserTasks ({tasks, changeActiveWorkspace, toggleLoading}: UserTasksProps) {
-
-  async function handleAddTask () {
-    const newTaskName = prompt('Please enter the name of the new task');
-    const newTaskDescription = prompt('Provide a description for the new task');
-    const newTask : Task = {taskName: newTaskName, taskDescription: newTaskDescription}
-
-    if(newTaskName?.trim() && newTaskDescription?.trim()) {
-      toggleLoading();
-      createTask(JSON.parse(sessionStorage.getItem('user-data') || '')._id, newTask);
-    }
-  }
-
+function UserTasks ({changeActiveWorkspace}: UserTasksProps) {
   return (
     <div className="usertasks-container" onClick={() => changeActiveWorkspace('Your', '')}>
       <div className="usertasks-info-container">
         <h3 className="usertasks-label">Your Tasks</h3>
-      </div>
-      <div className="usertasks-btn-container">
-        <div className="usertasks-add-btn"
-        onClick={() => handleAddTask()}
-        >+</div>
       </div>
     </div>
   );

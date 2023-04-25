@@ -4,6 +4,11 @@
   flex: 1;
   width: 100%;
   border: 1px solid gray ;
+  border-radius: 10px;
+}
+
+.currenttasks-container div:first-child {
+  border-radius: inherit;
 }
 
 .currenttasks-container::-webkit-scrollbar {

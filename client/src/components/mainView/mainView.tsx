@@ -6,13 +6,14 @@ import './mainView.css';
 interface MainViewProps {
   title: string,
   tasks: Task [],
-  toggleLoading: () => void
+  toggleLoading: () => void,
+  currWSID: string
 }
 
-function MainView ({title, tasks, toggleLoading} : MainViewProps) {
+function MainView ({title, tasks, toggleLoading, currWSID} : MainViewProps) {
   return (
     <div className="mainview-container">
-      <WsLabel wsName={title} toggleLoading={toggleLoading}></WsLabel>
+      <WsLabel wsName={title} toggleLoading={toggleLoading} currWSID={currWSID}></WsLabel>
       <CurrentTasks tasks={tasks}></CurrentTasks>
     </div>
   );

@@ -26,6 +26,7 @@ function Dashboard () {
   const [currUserData, setCurrUserData] = useState({} as WorkspacesProps);
   const [currWSData, setCurrWSData] = useState({} as Task[]);
   const [tempWSData, setTempWSData] = useState({} as Task[]);
+  const [currWSID, setCurrWSID] = useState('');
 
   const [activeWSTasks, setActiveWSTasks] = useState([] as Task[]);
 
@@ -44,23 +45,27 @@ function Dashboard () {
   }
 
   async function changeActiveWorkspace (newWS : string, _id: string) {
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 400)
     setActiveWorkspace(newWS);
-    if (newWS === 'Your') {
-      setActiveWSTasks(currUserData.tasks);
-    } else {
-      currUserData.teams.forEach(el => {
-        if(el.title === newWS){
-          setActiveWSTasks(el.teamTasks as Task[])
-          return;
-        }
-      })
-      currUserData.projects.forEach(el => {
-        if(el.title === newWS) {
-          setActiveWSTasks(el.projectTasks as Task[])
-          return;
-        }
-      })
-    }
+    // if (newWS === 'Your') {
+    //   setActiveWSTasks(currUserData.tasks);
+    // } else {
+    //   currUserData.teams.forEach(el => {
+    //     if(el.title === newWS){
+    //       setActiveWSTasks(el.teamTasks as Task[])
+    //       return;
+    //     }
+    //   })
+    //   currUserData.projects.forEach(el => {
+    //     if(el.title === newWS) {
+    //       setActiveWSTasks(el.projectTasks as Task[])
+    //       return;
+    //     }
+    //   })
+    // }
   }
 
   const toggleLoading = async () => {
@@ -93,7 +98,7 @@ function Dashboard () {
         <Workspaces userData={currUserData} changeActiveWorkspace={changeActiveWorkspace} toggleLoading={toggleLoading}></Workspaces>
       </div>
       {currUserData && 
-        <MainView toggleLoading={toggleLoading} title={activeWorkspace} tasks={activeWSTasks}></MainView>
+        <MainView toggleLoading={toggleLoading} title={activeWorkspace} tasks={activeWSTasks} currWSID={currWSID}></MainView>
       }
     </div>
   );

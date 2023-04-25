@@ -19,7 +19,7 @@ interface WorkspacesProps {
 function Workspaces ({userData, changeActiveWorkspace, toggleLoading} : WorkspacesProps) {
   return (
     <div className="workspaces-container">
-      <UserTasks tasks={userData.tasks} changeActiveWorkspace={changeActiveWorkspace} toggleLoading={toggleLoading}></UserTasks>
+      <UserTasks changeActiveWorkspace={changeActiveWorkspace}></UserTasks>
       <UserProjects projectArray={userData.projects} changeActiveWorkspace={changeActiveWorkspace} toggleLoading={toggleLoading}></UserProjects>
       <UserTeams teamArray={userData.teams} changeActiveWorkspace={changeActiveWorkspace} toggleLoading={toggleLoading}></UserTeams>
     </div>

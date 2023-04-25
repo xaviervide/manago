@@ -4,10 +4,11 @@ import './wsLabel.css';
 
 interface WsLabelProps {
   wsName: string,
-  toggleLoading: () => void
+  toggleLoading: () => void,
+  currWSID: string
 }
 
-function WsLabel ({wsName, toggleLoading} : WsLabelProps) {
+function WsLabel ({wsName, toggleLoading, currWSID} : WsLabelProps) {
 
   async function handleAddTask () {
     const newTaskName = prompt('Please enter the name of the new task');
@@ -16,7 +17,11 @@ function WsLabel ({wsName, toggleLoading} : WsLabelProps) {
 
     if(newTaskName?.trim() && newTaskDescription?.trim()) {
       toggleLoading();
-      createTask(JSON.parse(sessionStorage.getItem('user-data') || '')._id, newTask);
+      if (currWSID === JSON.parse(sessionStorage.getItem('user-data') || '')._id) {
+        createTask(JSON.parse(sessionStorage.getItem('user-data') || '')._id, newTask);
+      } else {
+        createTask(JSON.parse(sessionStorage.getItem('user-data') || '')._id, newTask);
+      }
     }
   }
 
