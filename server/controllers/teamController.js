@@ -1,3 +1,4 @@
+import Task from '../models/taskModel.js';
 import Team from '../models/teamModel.js';
 import User from '../models/userModel.js';
 
@@ -22,6 +23,15 @@ export const createTeam = async (req, res) => {
 
 export const getTeamData = async (req, res) => {
   try {
+    const teamID = req.params.teamId;
+    const teamDocument = await Team.findById(teamID)
+      .populate({
+        path: 'teamTasks',
+        model: Task
+      })
+      .populate('teamMembers', 'firstName');
+
+    res.status(201).json(teamDocument);
 
   } catch (err) {
     console.log('ERROR GETTIN TEAM DATA: ', err);

@@ -1,4 +1,5 @@
 import Project from '../models/projectModel.js';
+import Task from '../models/taskModel.js';
 import User from '../models/userModel.js';
 
 export const createProject = async (req, res) => {
@@ -23,8 +24,12 @@ export const createProject = async (req, res) => {
 export const getProjectData = async (req, res) => {
   try {
     const projectID = req.params.projectId;
-    const projectDocument = await Project.findById(projectID);
-
+    const projectDocument = await Project.findById(projectID)
+      .populate({
+        path: 'projectTasks',
+        model: Task
+      })
+      
     res.status(201).json(projectDocument);
 
   } catch (err) {

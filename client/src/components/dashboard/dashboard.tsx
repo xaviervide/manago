@@ -20,11 +20,12 @@ interface WorkspacesProps {
 function Dashboard () {
 
   const [activeWorkspace, setActiveWorkspace] = useState('Your')
-
   const [isWorkspaceShowing, setIsWorkspaceShowing] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
+
   const [currUserData, setCurrUserData] = useState({} as WorkspacesProps);
   const [currWSData, setCurrWSData] = useState({} as Task[]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [tempWSData, setTempWSData] = useState({} as Task[]);
 
   const navigate = useNavigate();
 
@@ -42,10 +43,12 @@ function Dashboard () {
 
   async function changeActiveWorkspace (newWS : string, _id: string) {
     setActiveWorkspace(newWS);
-    if(_id.trim().length !== 0) {
+    if (newWS === 'Your') {
+      setTempWSData(currUserData.tasks);
+    } else {
       await fetchProjectData(_id)
-        .then(res => setCurrWSData(res));
-    } 
+      .then(res => setTempWSData(res))
+    }
   }
 
   const toggleLoading = async () => {
@@ -53,15 +56,17 @@ function Dashboard () {
     await handleLoad();
     setTimeout(() => {
       setIsLoading(false);
-    }, 300)
+    }, 700)
   }
 
   async function handleLoad () {
     const userID = JSON.parse(sessionStorage.getItem('user-data') || '')._id;
     try {
-      const userData = await fetchUserData(userID);
-      setCurrUserData(userData);
-      setCurrWSData(userData.tasks);
+      if(activeWorkspace === 'Your') {
+        const userData = await fetchUserData(userID);
+        setCurrUserData(userData);
+        setCurrWSData(userData.tasks);
+      }
     } catch (err) {
       window.location.reload();
       alert('Something went wrong!');
@@ -76,7 +81,7 @@ function Dashboard () {
       <Workspaces userData={currUserData} changeActiveWorkspace={changeActiveWorkspace} toggleLoading={toggleLoading}></Workspaces>
       }
       {currUserData && 
-        <MainView title={activeWorkspace} numOfTasks={currWSData.length} tasks={currWSData}></MainView>
+        <MainView title={activeWorkspace} numOfTasks={currWSData? currWSData.length : 0} tasks={tempWSData}></MainView>
       }
     </div>
   );

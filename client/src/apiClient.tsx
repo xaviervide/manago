@@ -76,6 +76,18 @@ export async function fetchProjectData (projectID: string) {
     const currWSData = await fetch((serverURL + `project/${projectID}`))
       .then(res => res.json());
 
+    return currWSData.projectTasks;
+    
+  } catch (err) {
+    throw new Error(err as string);
+  }
+}
+
+export async function fetchTeamData (teamID: string) {
+  try {
+    const currWSData = await fetch((serverURL + `team/${teamID}`))
+      .then(res => res.json());
+
     return currWSData;
     
   } catch (err) {

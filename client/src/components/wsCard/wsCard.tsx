@@ -4,7 +4,7 @@ import './wsCard.css';
 
 interface WSCardProps {
   cardContent: Project | Team,
-  changeActiveWorkspace: (wsName: string, _id: string) => void
+  changeActiveWorkspace: (wsName: string, _id: string) => void,
 }
 
 function WsCard ({cardContent, changeActiveWorkspace} : WSCardProps) {

@@ -61,12 +61,6 @@ function TaskCard ({cardContent} : TaskCardProps) {
           <p>{cardContent.taskDescription}</p>
         </div>
       </div>
-        <div className="taskcard-members-container">
-          <div>X</div>
-          <div>L</div>
-          <div>A</div>
-          <div>+3</div>
-        </div>
       <div className="taskcard-timer-container">
         <button 
           className={`timer-button ${isRunning ? "stop-state" : "start-state"}`}
