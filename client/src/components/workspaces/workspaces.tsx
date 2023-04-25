@@ -3,6 +3,7 @@ import { Team } from '../../interfaces/Team';
 import UserCollection from '../userCollection/userCollection';
 import UserProjects from '../userProjects/userProjects';
 import UserTasks from '../userTasks/userTasks';
+import UserTeams from '../userTeams/userTeams';
 import './workspaces.css';
 
 interface WorkspacesProps {
@@ -21,7 +22,7 @@ function Workspaces ({userData, changeActiveWorkspace, toggleLoading} : Workspac
     <div className="workspaces-container">
       <UserTasks tasks={userData.tasks} changeActiveWorkspace={changeActiveWorkspace} toggleLoading={toggleLoading}></UserTasks>
       <UserProjects projectArray={userData.projects} changeActiveWorkspace={changeActiveWorkspace}></UserProjects>
-      <UserCollection isProjects={false} collectionProjects={userData.teams} changeActiveWorkspace={changeActiveWorkspace}></UserCollection>
+      <UserTeams teamArray={userData.teams} changeActiveWorkspace={changeActiveWorkspace}></UserTeams>
     </div>
   );
 }
