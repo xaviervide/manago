@@ -8,7 +8,7 @@ function Sidebar ({toggleWorkspace} : sidebarProps) {
   return (
     <div className="sidebar-container">
       <div className="sidebar-logo-container">
-        <h2>MANAGO</h2>
+        <h2>M</h2>
       </div>
       <div className="sidebar-icons-container">
         <div>

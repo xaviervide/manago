@@ -1,16 +1,20 @@
 import User from '../models/userModel.js';
 import Project from '../models/projectModel.js';
 import Task from '../models/taskModel.js';
+import Team from '../models/teamModel.js';
 
 export const getUserData = async (req, res) => {
   try {
     const userID = req.params.userId;
+
+    /* GET USER DATA */
     const userDocument = await User.findById(userID);
 
-    const userProjects = await Project.find({"_id": {"$in": userDocument.projectIds}});
-    const userTeams = await Project.find({"_id": {"$in": userDocument.teamIds}});
     const userTasks = await Task.find({"_id": {"$in": userDocument.taskIds}});
+    const userProjects = await Project.find({"_id": {"$in": userDocument.projectIds}});
+    const userTeams = await Team.find({"_id": {"$in": userDocument.teamIds}});
 
+    
     const userData = {
       projects: userProjects,
       teams: userTeams,

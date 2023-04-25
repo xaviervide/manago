@@ -6,9 +6,9 @@ if [ $# -eq 0 ]; then
 fi
 
 
-mkdir -p "./client/src/components2/$1"
-touch "./client/src/components2/$1/$1.tsx"
-touch "./client/src/components2/$1/$1.css"
+mkdir -p "./client/src/components/$1"
+touch "./client/src/components/$1/$1.tsx"
+touch "./client/src/components/$1/$1.css"
 
 echo "import './$1.css';
 
@@ -20,9 +20,9 @@ function ${1^} () {
   );
 }
 
-export default ${1^};" > "./client/src/components2/$1/$1.tsx"
+export default ${1^};" > "./client/src/components/$1/$1.tsx"
 
 echo "${1^} component successfully created!"
 
-code "./client/src/components2/$1/$1.tsx"
-code "./client/src/components2/$1/$1.css"
+code "./client/src/components/$1/$1.tsx"
+code "./client/src/components/$1/$1.css"

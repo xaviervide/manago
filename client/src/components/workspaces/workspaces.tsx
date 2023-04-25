@@ -8,14 +8,15 @@ interface WorkspacesProps {
     teams: {projectName: string, projectDescription: string, _id: string}[]
     tasks: object [],
   }
-  changeActiveWorkspace: (newWS : string, _id: string) => void
+  changeActiveWorkspace: (newWS : string, _id: string) => void,
+  toggleLoading: () => void
 }
 
 
-function Workspaces ({userData, changeActiveWorkspace} : WorkspacesProps) {
+function Workspaces ({userData, changeActiveWorkspace, toggleLoading} : WorkspacesProps) {
   return (
     <div className="workspaces-container">
-      <UserTasks tasks={userData.tasks} changeActiveWorkspace={changeActiveWorkspace}></UserTasks>
+      <UserTasks tasks={userData.tasks} changeActiveWorkspace={changeActiveWorkspace} toggleLoading={toggleLoading}></UserTasks>
       <UserCollection isProjects={true} collectionProjects={userData.projects} changeActiveWorkspace={changeActiveWorkspace}></UserCollection>
       <UserCollection isProjects={false} collectionProjects={userData.teams} changeActiveWorkspace={changeActiveWorkspace}></UserCollection>
     </div>

@@ -3,7 +3,7 @@ import mongoose from "../mongoosedb.js";
 const teamSchema = mongoose.Schema({
   teamName: String,
   teamDescription: String,
-  currentTaskIds: {
+  teamTasksIds: {
     type: [String],
     default: []
   },

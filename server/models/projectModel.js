@@ -3,7 +3,7 @@ import mongoose from '../mongoosedb.js';
 const projectSchema = mongoose.Schema({
   projectName: String,
   projectDescription: String,
-  currentTaskIds: {
+  projectTasksIds: {
     type: [String],
     default: []
   }

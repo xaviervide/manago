@@ -5,7 +5,6 @@ import './index.css';
 import Login from './components/login/login';
 import Register from './components/register/register';
 import Dashboard from './components/dashboard/dashboard';
-import { useNavigate } from 'react-router-dom';
 import Redirect from './components/redirect/redirect';
 
 

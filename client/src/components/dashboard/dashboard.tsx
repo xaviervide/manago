@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import Workspaces from '../workspaces/workspaces';
 import Sidebar from '../sidebar/sidebar';
 import MainView from '../mainView/mainView';
+import Loading from '../loading/loading';
 
 
 interface WorkspacesProps {
@@ -20,11 +21,15 @@ function Dashboard () {
   const [isWorkspaceShowing, setIsWorkspaceShowing] = useState(true);
   const [currUserData, setCurrUserData] = useState({} as WorkspacesProps);
   const [currWSData, setCurrWSData] = useState({_id: '', projectName: '', projectDescription: '', currentEmployeesIds: [], currentTaskIds: []})
+  const [isLoading, setIsLoading] = useState(true);
 
   const navigate = useNavigate();
 
   useEffect(() => {
     if (!sessionStorage.getItem('user-token')) navigate('/');
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1000)
     handleLoad();
   }, [])
 
@@ -40,6 +45,14 @@ function Dashboard () {
     } 
   }
 
+  const toggleLoading = async () => {
+    setIsLoading(!isLoading);
+    await handleLoad();
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1000)
+  }
+
   async function handleLoad () {
     const userID = JSON.parse(sessionStorage.getItem('user-data') || '')._id;
     try {
@@ -53,9 +66,10 @@ function Dashboard () {
 
   return (
     <div className="dashboard-container" onClick={async () => await handleLoad()}>
+      {isLoading && <Loading></Loading>}
       <Sidebar toggleWorkspace={toggleWorkspace}></Sidebar>
       {currUserData && isWorkspaceShowing && 
-      <Workspaces userData={currUserData} changeActiveWorkspace={changeActiveWorkspace}></Workspaces>
+      <Workspaces userData={currUserData} changeActiveWorkspace={changeActiveWorkspace} toggleLoading={toggleLoading}></Workspaces>
       }
       {currUserData && 
         <MainView title={activeWorkspace} numOfTasks={currUserData.tasks?.length} tasks={currUserData.tasks}></MainView>
